@@ -54,6 +54,10 @@ public final class Constants {
     public static final String QUERY = "query";
     public static final String COMMAND = "command";
     public static final String RECOMMENDATION = "recommendation";
+    public static final String AVERAGE = "average";
+
+    public static final String ASC = "asc";
+    public static final String DESC = "desc";
 
     // checker constants
     public static final String ID_STRING = "id";
@@ -75,4 +79,7 @@ public final class Constants {
     public static final int MAX_LENGTH = 50;
 
     // add any constants you think you may use
+    public static final String NO_QUERY = "query_no_values";
+    public static final String QUERY_RESULT_BEGIN = "query_result_begin ";
+    public static final String QUERY_RESULT_END = " query_result_end";
 }

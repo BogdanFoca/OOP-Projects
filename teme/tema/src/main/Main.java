@@ -1,5 +1,6 @@
 package main;
 
+import Entities.Pair;
 import checker.Checkstyle;
 import checker.Checker;
 import common.Constants;
@@ -31,6 +32,7 @@ public final class Main {
      * @throws IOException in case of exceptions to reading / writing
      */
     public static void main(final String[] args) throws IOException {
+
         File directory = new File(Constants.TESTS_PATH);
         Path path = Paths.get(Constants.RESULT_PATH);
         if (!Files.exists(path)) {
