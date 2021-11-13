@@ -1,4 +1,4 @@
-package Queries;
+package Action.Queries;
 
 public class MovieQuery {
 }

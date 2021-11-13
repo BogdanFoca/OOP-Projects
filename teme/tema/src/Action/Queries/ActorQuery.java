@@ -1,13 +1,13 @@
-package Queries;
+package Action.Queries;
 
 import Database.Database;
 import Entities.Video;
 import actor.Actor;
 import common.Constants;
 import fileio.ActionInputData;
+import fileio.ActorInputData;
 import utils.ActionResponse;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,11 +18,11 @@ public class ActorQuery {
     public ActionResponse SolveQuery(ActionInputData action){
         ActionResponse actionResponse = new ActionResponse();
         actionResponse.setId(action.getActionId());
+        List<Actor> sortedActorList = Database.GetInstance().actors;
         switch(action.getCriteria()){
             case Constants.AVERAGE:
-                List<Actor> sortedActorList = Database.GetInstance().actors;
                 sortedActorList = SortActorListByAverage(sortedActorList, action);
-                if(sortedActorList == null){
+                if(sortedActorList.size() == 0){
                     actionResponse.setResponse(Constants.NO_QUERY);
                 }
                 else{
@@ -43,18 +43,61 @@ public class ActorQuery {
                     actionResponse.setResponse(actionResponse.OutputActorsQuery(action, responseList));
                 }
                 break;
+            case Constants.AWARDS:
+                sortedActorList = SortActorListByAwards(sortedActorList, action);
+                if(sortedActorList.size() == 0){
+                    actionResponse.setResponse(null);
+                }
+                else{
+                    actionResponse.setResponse(actionResponse.OutputActorsQuery(action, sortedActorList));
+                }
+                break;
+            case Constants.FILTER_DESCRIPTIONS:
+                sortedActorList = SortActorListByFilters(sortedActorList, action);
+                if(sortedActorList.size() == 0){
+                    actionResponse.setResponse(null);
+                }
+                else{
+                    actionResponse.setResponse(actionResponse.OutputActorsQuery(action, sortedActorList));
+                }
+                break;
         }
 
         return actionResponse;
     }
 
     List<Actor> SortActorListByAverage(List<Actor> actors, ActionInputData action){
-        actors.sort(new SortActorsByName());
-        actors.sort(new SortActorsByRating());
+        List<Actor> sorted = new ArrayList<Actor>(actors);
+        sorted.sort(new SortActorsByName());
+        sorted.sort(new SortActorsByRating());
         if(action.getSortType().equals(Constants.DESC)){
-            Collections.reverse(actors);
+            Collections.reverse(sorted);
         }
-        return actors;
+        return sorted;
+    }
+
+    List<Actor> SortActorListByAwards(List<Actor> actors, ActionInputData action){
+        List<Actor> filtered = new ArrayList<Actor>(actors);
+        for(String award : action.getFilters().get(0)) {
+            filtered.removeIf(actor -> !actor.getAwards().containsKey(award));
+        }
+        filtered.sort(new SortActorsByAwards());
+        if(action.getSortType().equals(Constants.DESC)){
+            Collections.reverse(filtered);
+        }
+        return filtered;
+    }
+
+    List<Actor> SortActorListByFilters(List<Actor> actors, ActionInputData action){
+        List<Actor> filtered = new ArrayList<Actor>(actors);
+        for(String word : action.getFilters().get(3)){
+            for(Actor a : filtered){
+                if(a.getCareerDescription().contains(word)){
+                    filtered.remove(a);
+                }
+            }
+        }
+        return filtered;
     }
 }
 
@@ -81,5 +124,12 @@ class SortActorsByRating implements Comparator<Actor>{
         ratingOverall2 /= a2.filmography.size();
 
         return Double.compare(ratingOverall1, ratingOverall2);
+    }
+}
+
+class SortActorsByAwards implements Comparator<Actor>{
+    @Override
+    public int compare(Actor a1, Actor a2){
+        return Integer.compare(a1.getAwards().size(), a2.getAwards().size());
     }
 }
