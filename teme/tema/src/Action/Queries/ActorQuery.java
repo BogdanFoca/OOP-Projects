@@ -18,7 +18,11 @@ public class ActorQuery {
     public ActionResponse SolveQuery(ActionInputData action){
         ActionResponse actionResponse = new ActionResponse();
         actionResponse.setId(action.getActionId());
-        List<Actor> sortedActorList = Database.GetInstance().actors;
+        List<Actor> sortedActorList = new ArrayList<Actor>();
+        for(Actor a : Database.GetInstance().actors){
+            sortedActorList.add(a);
+        }
+        List<Actor> truncatedList = new ArrayList<Actor>();
         switch(action.getCriteria()){
             case Constants.AVERAGE:
                 sortedActorList = SortActorListByAverage(sortedActorList, action);
@@ -40,27 +44,28 @@ public class ActorQuery {
                             index++;
                         }
                     }
-                    actionResponse.setResponse(actionResponse.OutputActorsQuery(action, responseList));
                 }
                 break;
             case Constants.AWARDS:
                 sortedActorList = SortActorListByAwards(sortedActorList, action);
-                if(sortedActorList.size() == 0){
-                    actionResponse.setResponse(null);
-                }
-                else{
-                    actionResponse.setResponse(actionResponse.OutputActorsQuery(action, sortedActorList));
-                }
                 break;
             case Constants.FILTER_DESCRIPTIONS:
                 sortedActorList = SortActorListByFilters(sortedActorList, action);
-                if(sortedActorList.size() == 0){
-                    actionResponse.setResponse(null);
-                }
-                else{
-                    actionResponse.setResponse(actionResponse.OutputActorsQuery(action, sortedActorList));
-                }
                 break;
+        }
+        if(sortedActorList.size() == 0){
+            actionResponse.setResponse(null);
+        }
+        else{
+            if(action.getCriteria().equals(Constants.AVERAGE)) {
+                for (int i = 0; i < Math.min(action.getNumber(), sortedActorList.size()); i++) {
+                    truncatedList.add(sortedActorList.get(i));
+                }
+                actionResponse.setResponse(actionResponse.OutputActorsQuery(action, truncatedList));
+            }
+            else {
+                actionResponse.setResponse(actionResponse.OutputActorsQuery(action, sortedActorList));
+            }
         }
 
         return actionResponse;

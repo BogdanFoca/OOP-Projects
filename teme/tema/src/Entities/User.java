@@ -1,5 +1,7 @@
 package Entities;
 
+import Database.Database;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,8 +18,11 @@ public class User extends Object{
     Map<String, Double> movieReviews = new HashMap<String, Double>();
     Map<Pair<String, Integer>, Double> seasonReviews = new HashMap<Pair<String, Integer>, Double>();
 
-    public User(String username){
+    public User(String username, String userType, Map<String, Integer> history, List<String> favoriteVideos){
         this.username = username;
+        this.userType = UserType.valueOf(userType);
+        watchedVideos = new HashMap<String, Integer>(history);
+        this.favoriteVideos = new ArrayList<String>(favoriteVideos);
     }
 
     public String GetUsername(){
@@ -27,19 +32,27 @@ public class User extends Object{
      * Adds a video to favorites
      * @param video Video to add
      */
-    public void AddToFavorite(Video video){
-        if(favoriteVideos.contains(video.toString())) {
-            favoriteVideos.add(video.toString());
+    public void AddToFavorite(String video){
+        if(favoriteVideos.contains(video)) {
+            favoriteVideos.add(video);
         }
     }
 
-    public void WatchVideo(Video video){
-        if(watchedVideos.containsKey(video.GetTitle())){
-            watchedVideos.put(video.GetTitle(), watchedVideos.get(video) + 1);
+    public List<String> GetFavoriteVideos(){
+        return favoriteVideos;
+    }
+
+    public void WatchVideo(String video){
+        if(watchedVideos.containsKey(video)){
+            watchedVideos.put(video, watchedVideos.get(video) + 1);
         }
         else{
-            watchedVideos.put(video.GetTitle(), 1);
+            watchedVideos.put(video, 1);
         }
+    }
+
+    public Map<String, Integer> GetWatchedVideos(){
+        return watchedVideos;
     }
 
     /**
@@ -47,16 +60,16 @@ public class User extends Object{
      * @param movie Movie to rate
      * @param rating Rating. Clamped to [1, 10]
      */
-    public void RateVideo(Movie movie, double rating){
+    public void RateVideo(String movie, double rating){
         if(rating < 1){
             rating = 1;
         }
         if(rating > 10){
             rating = 10;
         }
-        if(!movieReviews.containsKey(movie.GetTitle())){
-            movieReviews.put(movie.GetTitle(), rating);
-            movie.AddRating(rating);
+        if(!movieReviews.containsKey(movie)){
+            movieReviews.put(movie, rating);
+            Database.GetInstance().movies.stream().filter(m -> m.GetTitle().equals(movie)).findFirst().orElse(null).AddRating(rating);
         }
     }
 
@@ -66,15 +79,16 @@ public class User extends Object{
      * @param season Index of season
      * @param rating Rating. Clamped to [1, 10]
      */
-    public void RateVideo(Show show, int season, double rating){
+    public void RateVideo(String show, int season, double rating){
         if(rating < 1){
             rating = 1;
         }
         if(rating > 10){
             rating = 10;
         }
-        if(!seasonReviews.containsKey(new Pair<String, Integer>(show.GetTitle(), season))){
-            seasonReviews.put(new Pair<String, Integer>(show.GetTitle(), season), rating);
+        if(!seasonReviews.containsKey(new Pair<String, Integer>(show, season))){
+            seasonReviews.put(new Pair<String, Integer>(show, season), rating);
+            Database.GetInstance().shows.stream().filter(m -> m.GetTitle().equals(show)).findFirst().orElse(null).GetSeasons().get(season).getRatings().add(rating);
         }
     }
 }

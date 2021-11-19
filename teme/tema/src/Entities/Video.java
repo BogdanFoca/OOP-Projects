@@ -10,6 +10,9 @@ public class Video extends Object {
     int releaseYear;
     //Video genres
     List<Genre> genres = new ArrayList<Genre>();
+    List<String> cast = new ArrayList<String>();
+
+    int duration;
 
     double rating;
 
@@ -29,5 +32,9 @@ public class Video extends Object {
 
     public void SetRating(double rating){
         this.rating = rating;
+    }
+
+    public int GetDuration(){
+        return duration;
     }
 }

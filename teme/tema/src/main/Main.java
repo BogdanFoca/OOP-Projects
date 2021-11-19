@@ -1,12 +1,14 @@
 package main;
 
+import Database.Database;
+import Entities.Movie;
 import Entities.Pair;
+import Entities.Show;
+import Entities.User;
 import checker.Checkstyle;
 import checker.Checker;
 import common.Constants;
-import fileio.Input;
-import fileio.InputLoader;
-import fileio.Writer;
+import fileio.*;
 import org.json.simple.JSONArray;
 
 import java.io.File;
@@ -73,8 +75,21 @@ public final class Main {
         JSONArray arrayResult = new JSONArray();
 
         //TODO add here the entry point to your implementation
+        for(MovieInputData movie : input.getMovies()){
+            Database.GetInstance().movies.add(new Movie(movie.getTitle(), movie.getYear(), movie.getGenres(), movie.getCast(), movie.getDuration()));
+        }
+        for(SerialInputData show : input.getSerials()){
+            Database.GetInstance().shows.add(new Show(show.getTitle(), show.getYear(), show.getGenres(), show.getCast(), show.getNumberSeason(), show.getSeasons()));
+        }
+        for(UserInputData user : input.getUsers()){
+            Database.GetInstance().users.add(new User(user.getUsername(), user.getSubscriptionType(), user.getHistory(), user.getFavoriteMovies()));
+        }
+        for(ActorInputData actor : input.getActors()){
 
+        }
+        for(ActionInputData actionInputData : input.getCommands()){
 
+        }
         fileWriter.closeJSON(arrayResult);
     }
 }

@@ -55,6 +55,11 @@ public final class Constants {
     public static final String COMMAND = "command";
     public static final String RECOMMENDATION = "recommendation";
     public static final String AVERAGE = "average";
+    public static final String VIEW_MOVIES = "view";
+    public static final String RATING = "rating";
+    public static final String RATINGS = "ratings";
+    public static final String LONGEST = "longest";
+    public static final String MOST_VIEWED = "most_viewed";
 
     public static final String ASC = "asc";
     public static final String DESC = "desc";
