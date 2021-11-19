@@ -14,11 +14,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class VideoQuery {
+public class VideoQuery extends Query {
     public ActionResponse SolveQuery(ActionInputData action){
         ActionResponse response = new ActionResponse();
         response.setId(action.getActionId());
         List<Video> sortedVideoList = new ArrayList<Video>();
+        List<Video> truncatedVideoList = new ArrayList<Video>();
         for(Movie m : Database.GetInstance().movies){
             sortedVideoList.add(m);
         }
@@ -38,6 +39,15 @@ public class VideoQuery {
             case Constants.MOST_VIEWED:
                 sortedVideoList = SortVideoListByViews(sortedVideoList, action);
                 break;
+        }
+        if(sortedVideoList.size() == 0){
+            response.setResponse(null);
+        }
+        else{
+            for (int i = 0; i < Math.min(action.getNumber(), sortedVideoList.size()); i++) {
+                truncatedVideoList.add(sortedVideoList.get(i));
+            }
+            response.setResponse(response.OutputVideosQuery(action, truncatedVideoList));
         }
 
         return response;

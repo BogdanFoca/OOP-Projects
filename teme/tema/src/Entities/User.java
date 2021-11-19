@@ -91,6 +91,10 @@ public class User extends Object{
             Database.GetInstance().shows.stream().filter(m -> m.GetTitle().equals(show)).findFirst().orElse(null).GetSeasons().get(season).getRatings().add(rating);
         }
     }
+
+    public int GetNumberOfReviews(){
+        return movieReviews.size() + seasonReviews.size();
+    }
 }
 
 //User types

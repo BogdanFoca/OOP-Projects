@@ -5,6 +5,7 @@ import Entities.Movie;
 import Entities.Pair;
 import Entities.Show;
 import Entities.User;
+import actor.Actor;
 import checker.Checkstyle;
 import checker.Checker;
 import common.Constants;
@@ -85,7 +86,7 @@ public final class Main {
             Database.GetInstance().users.add(new User(user.getUsername(), user.getSubscriptionType(), user.getHistory(), user.getFavoriteMovies()));
         }
         for(ActorInputData actor : input.getActors()){
-
+            Database.GetInstance().actors.add(new Actor(actor.getName(), actor.getCareerDescription(), actor.getFilmography(), actor.getAwards()));
         }
         for(ActionInputData actionInputData : input.getCommands()){
 

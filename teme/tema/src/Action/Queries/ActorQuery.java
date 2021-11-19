@@ -13,7 +13,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class ActorQuery {
+public class ActorQuery extends Query {
 
     public ActionResponse SolveQuery(ActionInputData action){
         ActionResponse actionResponse = new ActionResponse();
@@ -34,8 +34,12 @@ public class ActorQuery {
                     List<Actor> responseList = new ArrayList<>();
                     for (Actor a : sortedActorList) {
                         double ratingOverall = 0;
-                        for (Video v : a.filmography) {
-                            ratingOverall += v.GetRating();
+                        for (String v : a.GetFilmography()) {
+                            Video video = Database.GetInstance().movies.stream().filter(m -> m.GetTitle().equals(v)).findAny().orElse(null);
+                            if(video == null){
+                                video = Database.GetInstance().shows.stream().filter(m -> m.GetTitle().equals(v)).findAny().orElse(null);
+                            }
+                            ratingOverall += video.GetRating();
                         }
                         if (ratingOverall != 0) {
                             if (index <= action.getNumber()) {
@@ -117,16 +121,24 @@ class SortActorsByRating implements Comparator<Actor>{
     @Override
     public int compare(Actor a1, Actor a2) {
         double ratingOverall1 = 0;
-        for (Video v : a1.filmography) {
-            ratingOverall1 += v.GetRating();
+        for (String v : a1.GetFilmography()) {
+            Video video = Database.GetInstance().movies.stream().filter(m -> m.GetTitle().equals(v)).findAny().orElse(null);
+            if(video == null){
+                video = Database.GetInstance().shows.stream().filter(m -> m.GetTitle().equals(v)).findAny().orElse(null);
+            }
+            ratingOverall1 += video.GetRating();
         }
-        ratingOverall1 /= a1.filmography.size();
+        ratingOverall1 /= a1.GetFilmography().size();
 
         double ratingOverall2 = 0;
-        for (Video v : a2.filmography) {
-            ratingOverall2 += v.GetRating();
+        for (String v : a2.GetFilmography()) {
+            Video video = Database.GetInstance().movies.stream().filter(m -> m.GetTitle().equals(v)).findAny().orElse(null);
+            if(video == null){
+                video = Database.GetInstance().shows.stream().filter(m -> m.GetTitle().equals(v)).findAny().orElse(null);
+            }
+            ratingOverall2 += video.GetRating();
         }
-        ratingOverall2 /= a2.filmography.size();
+        ratingOverall2 /= a2.GetFilmography().size();
 
         return Double.compare(ratingOverall1, ratingOverall2);
     }
