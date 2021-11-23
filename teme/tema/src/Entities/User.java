@@ -22,7 +22,17 @@ public class User extends Object{
         this.username = username;
         this.userType = UserType.valueOf(userType);
         watchedVideos = new HashMap<String, Integer>(history);
+        for(Map.Entry<String, Integer> entry : watchedVideos.entrySet()){
+            Database.GetInstance().movies.stream().filter(v -> v.GetTitle().equals(entry.getKey())).findFirst().orElse(null).IncrementViews(entry.getValue());
+        }
         this.favoriteVideos = new ArrayList<String>(favoriteVideos);
+        for(String video : favoriteVideos){
+            Video v = Database.GetInstance().movies.stream().filter(m -> m.GetTitle().equals(video)).findAny().orElse(null);
+            if(video == null){
+                v = Database.GetInstance().shows.stream().filter(m -> m.GetTitle().equals(video)).findAny().orElse(null);
+            }
+            v.IncrementFavoriteCount();
+        }
     }
 
     public String GetUsername(){
@@ -33,8 +43,13 @@ public class User extends Object{
      * @param video Video to add
      */
     public void AddToFavorite(String video){
-        if(favoriteVideos.contains(video)) {
+        if(!favoriteVideos.contains(video)) {
             favoriteVideos.add(video);
+            Video v = Database.GetInstance().movies.stream().filter(m -> m.GetTitle().equals(video)).findAny().orElse(null);
+            if(v==null){
+                v = Database.GetInstance().shows.stream().filter(m -> m.GetTitle().equals(video)).findAny().orElse(null);
+            }
+            v.IncrementFavoriteCount();
         }
     }
 
@@ -49,6 +64,7 @@ public class User extends Object{
         else{
             watchedVideos.put(video, 1);
         }
+        Database.GetInstance().movies.stream().filter(v -> v.GetTitle().equals(video)).findFirst().orElse(null).IncrementViews();
     }
 
     public Map<String, Integer> GetWatchedVideos(){

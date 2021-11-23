@@ -16,6 +16,9 @@ public class Video extends Object {
 
     double rating;
 
+    int views = 0;
+    int favoriteCount = 0;
+
     public String GetTitle(){
         return title;
     }
@@ -34,7 +37,31 @@ public class Video extends Object {
         this.rating = rating;
     }
 
+    public List<Genre> GetGenres(){
+        return genres;
+    }
+
     public int GetDuration(){
         return duration;
+    }
+
+    public void IncrementViews(){
+        views += 1;
+    }
+
+    public void IncrementViews(int no){
+        views += no;
+    }
+
+    public void IncrementFavoriteCount(){
+        favoriteCount++;
+    }
+
+    public int GetViews(){
+        return views;
+    }
+
+    public int GetFavoriteCount(){
+        return favoriteCount;
     }
 }

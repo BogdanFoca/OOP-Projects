@@ -55,7 +55,7 @@ public class VideoQuery extends Query {
 
     List<Video> SortVideoListByRating(List<Video> videoList, ActionInputData action){
         List<Video> sortedList = new ArrayList<Video>(videoList);
-        sortedList.sort(new SortVideoByLongest());
+        sortedList.sort(new SortVideoByRatings());
         if(action.getSortType().equals(Constants.DESC)){
             Collections.reverse(sortedList);
         }
@@ -64,7 +64,7 @@ public class VideoQuery extends Query {
 
     List<Video> SortVideoListByDuration(List<Video> videoList, ActionInputData action){
         List<Video> sortedList = new ArrayList<Video>(videoList);
-        sortedList.sort(new SortVideoByRatings());
+        sortedList.sort(new SortVideoByLongest());
         if(action.getSortType().equals(Constants.DESC)){
             Collections.reverse(sortedList);
         }
