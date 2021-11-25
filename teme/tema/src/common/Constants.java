@@ -108,4 +108,8 @@ public final class Constants {
     public static final String SEARCH_RECOMMENDATION = "SearchRecommendation";
     public static final String RECOMMENDATION_FAIL = " cannot be applied!";
     public static final String RECOMMENDATION_RESULT_BEGIN = " result: ";
+    public static final int NUMBER_0 = 0;
+    public static final int NUMBER_1 = 1;
+    public static final int NUMBER_2 = 2;
+    public static final int NUMBER_3 = 3;
 }

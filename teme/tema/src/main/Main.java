@@ -1,18 +1,30 @@
 package main;
 
-import Action.Command.Command;
-import Action.Queries.ActorQuery;
-import Action.Queries.UserQuery;
-import Action.Queries.VideoQuery;
-import Action.Recommandations.PremiumRecommendation;
-import Action.Recommandations.StandardRecommendation;
-import Database.Database;
-import Entities.*;
+import action.command.Command;
+import action.Queries.ActorQuery;
+import action.Queries.UserQuery;
+import action.Queries.VideoQuery;
+import action.Recommandations.PremiumRecommendation;
+import action.Recommandations.StandardRecommendation;
+import database.Database;
+
 import actor.Actor;
 import checker.Checkstyle;
 import checker.Checker;
 import common.Constants;
-import fileio.*;
+
+import entities.Movie;
+import entities.Show;
+import entities.User;
+import entities.UserType;
+import fileio.SerialInputData;
+import fileio.ActionInputData;
+import fileio.MovieInputData;
+import fileio.UserInputData;
+import fileio.ActorInputData;
+import fileio.Writer;
+import fileio.InputLoader;
+import fileio.Input;
 import org.json.simple.JSONArray;
 import utils.ActionResponse;
 
@@ -81,26 +93,40 @@ public final class Main {
         //TODO add here the entry point to your implementation
         Database.getInstance().clearDatabase();
 
-        for(MovieInputData movie : input.getMovies()){
-            Database.getInstance().addMovie(new Movie(movie.getTitle(), movie.getYear(), movie.getGenres(), movie.getCast(), movie.getDuration()));
+        for (MovieInputData movie : input.getMovies()) {
+            Database.getInstance().addMovie(
+                    new Movie(movie.getTitle(), movie.getYear(),
+                            movie.getGenres(), movie.getCast(), movie.getDuration()));
         }
-        for(SerialInputData show : input.getSerials()){
-            Database.getInstance().addShow(new Show(show.getTitle(), show.getYear(), show.getGenres(), show.getCast(), show.getNumberSeason(), show.getSeasons()));
+        for (SerialInputData show : input.getSerials()) {
+            Database.getInstance().addShow(
+                    new Show(show.getTitle(), show.getYear(),
+                            show.getGenres(), show.getCast(),
+                            show.getNumberSeason(), show.getSeasons()));
         }
-        for(UserInputData user : input.getUsers()){
-            Database.getInstance().users.add(new User(user.getUsername(), user.getSubscriptionType(), user.getHistory(), user.getFavoriteMovies()));
+        for (UserInputData user : input.getUsers()) {
+            Database.getInstance().getUsers().add(
+                    new User(user.getUsername(), user.getSubscriptionType(),
+                            user.getHistory(), user.getFavoriteMovies()));
         }
-        for(ActorInputData actor : input.getActors()){
-            Database.getInstance().actors.add(new Actor(actor.getName(), actor.getCareerDescription(), actor.getFilmography(), actor.getAwards()));
+        for (ActorInputData actor : input.getActors()) {
+            Database.getInstance().getActors().add(
+                    new Actor(actor.getName(), actor.getCareerDescription(),
+                            actor.getFilmography(), actor.getAwards()));
         }
-        for(ActionInputData actionInputData : input.getCommands()){
+        for (ActionInputData actionInputData : input.getCommands()) {
             ActionResponse actionResponse = new ActionResponse();
-            switch (actionInputData.getActionType()){
+            switch (actionInputData.getActionType()) {
                 case Constants.COMMAND:
-                    actionResponse = Command.solveCommands(actionInputData, Database.getInstance().users.stream().filter(u -> u.getUsername().equals(actionInputData.getUsername())).findFirst().orElse(null));
+                    actionResponse = Command.solveCommands(
+                            actionInputData,
+                            Database.getInstance().getUsers().stream()
+                                    .filter(u -> u.getUsername()
+                                            .equals(actionInputData.getUsername()))
+                                                    .findFirst().orElse(null));
                     break;
                 case Constants.QUERY:
-                    switch(actionInputData.getObjectType()){
+                    switch (actionInputData.getObjectType()) {
                         case Constants.ACTORS:
                             actionResponse = ActorQuery.solveQuery(actionInputData);
                             break;
@@ -110,19 +136,27 @@ public final class Main {
                         case Constants.MOVIES: case Constants.SHOWS:
                             actionResponse = VideoQuery.solveQuery(actionInputData);
                             break;
+                        default:
+                            break;
                     }
                     break;
                 case Constants.RECOMMENDATION:
-                    User user = Database.getInstance().users.stream().filter(u -> u.getUsername().equals(actionInputData.getUsername())).findFirst().orElse(null);
-                    if(user.getUserType() == UserType.BASIC){
-                        actionResponse = StandardRecommendation.solveRecommendation(actionInputData, user);
-                    }
-                    else{
-                        actionResponse = PremiumRecommendation.solveRecommendation(actionInputData, user);
+                    User user = Database.getInstance().getUsers().stream()
+                            .filter(u -> u.getUsername().equals(actionInputData.getUsername()))
+                            .findFirst().orElse(null);
+                    if (user.getUserType() == UserType.BASIC) {
+                        actionResponse = StandardRecommendation
+                                .solveRecommendation(actionInputData, user);
+                    } else {
+                        actionResponse = PremiumRecommendation
+                                .solveRecommendation(actionInputData, user);
                     }
                     break;
+                default:
+                    break;
             }
-            arrayResult.add(fileWriter.writeFile(actionResponse.getId(), "", actionResponse.getResponse()));
+            arrayResult.add(fileWriter.writeFile(actionResponse.getId(), "",
+                    actionResponse.getResponse()));
         }
         fileWriter.closeJSON(arrayResult);
     }

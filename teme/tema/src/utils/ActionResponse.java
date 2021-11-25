@@ -1,14 +1,14 @@
 package utils;
 
-import Entities.User;
-import Entities.Video;
+import entities.User;
+import entities.Video;
 import actor.Actor;
 import common.Constants;
 import fileio.ActionInputData;
 
 import java.util.List;
 
-public class ActionResponse {
+public final class ActionResponse {
     private int id;
     private String response;
 
@@ -16,7 +16,7 @@ public class ActionResponse {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -24,11 +24,18 @@ public class ActionResponse {
         return response;
     }
 
-    public void setResponse(String response) {
+    public void setResponse(final String response) {
         this.response = response;
     }
 
-    public String outputActorsQuery(ActionInputData action, List<Actor> actorList) {
+    /**
+     *
+     * @param action
+     * @param actorList
+     * @return
+     */
+    public String outputActorsQuery(
+            final ActionInputData action, final List<Actor> actorList) {
         id = action.getActionId();
         StringBuilder outputBuilder = new StringBuilder();
         outputBuilder.append(Constants.QUERY_RESULT_BEGIN);
@@ -45,7 +52,14 @@ public class ActionResponse {
         return outputBuilder.toString();
     }
 
-    public String outputVideosQuery(ActionInputData action, List<Video> videoList) {
+    /**
+     *
+     * @param action
+     * @param videoList
+     * @return
+     */
+    public String outputVideosQuery(
+            final ActionInputData action, final List<Video> videoList) {
         id = action.getActionId();
         StringBuilder outputBuilder = new StringBuilder();
         outputBuilder.append(Constants.QUERY_RESULT_BEGIN);
@@ -62,7 +76,14 @@ public class ActionResponse {
         return outputBuilder.toString();
     }
 
-    public String outputUsersQuery(ActionInputData action, List<User> userList) {
+    /**
+     *
+     * @param action
+     * @param userList
+     * @return
+     */
+    public String outputUsersQuery(
+            final ActionInputData action, final List<User> userList) {
         id = action.getActionId();
         StringBuilder outputBuilder = new StringBuilder();
         outputBuilder.append(Constants.QUERY_RESULT_BEGIN);
@@ -79,9 +100,19 @@ public class ActionResponse {
         return outputBuilder.toString();
     }
 
-    public String outputFavoriteCommand(boolean hasSeenMovie, boolean movieAlreadyInFavorites,
-                                        String status, String movieName, int id) {
-        this.id = id;
+    /**
+     *
+     * @param hasSeenMovie
+     * @param movieAlreadyInFavorites
+     * @param status
+     * @param movieName
+     * @param idd
+     * @return
+     */
+    public String outputFavoriteCommand(
+            final boolean hasSeenMovie, final boolean movieAlreadyInFavorites,
+            final String status, final String movieName, final int idd) {
+        this.id = idd;
         StringBuilder outputBuilder = new StringBuilder();
         outputBuilder.append(status).append(" -> ").append(movieName);
 
@@ -99,10 +130,19 @@ public class ActionResponse {
         return outputBuilder.toString();
     }
 
-    public String outputViewCommand(boolean hasSeenMovie, String status,
-                                    String movieName, int id,
-                                    int viewNumber) {
-        this.id = id;
+    /**
+     *
+     * @param hasSeenMovie
+     * @param status
+     * @param movieName
+     * @param idd
+     * @param viewNumber
+     * @return
+     */
+    public String outputViewCommand(
+            final boolean hasSeenMovie, final String status,
+            final String movieName, final int idd, final int viewNumber) {
+        this.id = idd;
         StringBuilder outputBuilder = new StringBuilder();
         outputBuilder.append(status).append(" -> ").append(movieName);
         outputBuilder.append(Constants.VIEWED);
@@ -111,13 +151,22 @@ public class ActionResponse {
         return outputBuilder.toString();
     }
 
-    public String outputRatingCommand(boolean hasSeenMovie, boolean hasAlreadyRated,
-                                      String status, ActionInputData action) {
+    /**
+     *
+     * @param hasSeenMovie
+     * @param hasAlreadyRated
+     * @param status
+     * @param action
+     * @return
+     */
+    public String outputRatingCommand(
+            final boolean hasSeenMovie, final boolean hasAlreadyRated,
+            final String status, final ActionInputData action) {
         this.id = action.getActionId();
         StringBuilder outputBuilder = new StringBuilder();
         outputBuilder.append(status).append(" -> ").append(action.getTitle());
 
-        if (!hasSeenMovie){
+        if (!hasSeenMovie) {
             outputBuilder.append(Constants.NOT_SEEN);
         } else {
             if (hasAlreadyRated) {
@@ -133,8 +182,17 @@ public class ActionResponse {
         return outputBuilder.toString();
     }
 
-    public String outputRecommendation(boolean status, ActionInputData action, List<Video> videoList, User user){
-        id = action.getActionId();
+    /**
+     *
+     * @param status
+     * @param action
+     * @param videoList
+     * @return
+     */
+    public String outputRecommendation(
+            final boolean status, final ActionInputData action,
+            final List<Video> videoList) {
+        this.id = action.getActionId();
         StringBuilder outputBuilder = new StringBuilder();
         switch (action.getType()) {
             case Constants.BEST_UNSEEN:
@@ -152,10 +210,12 @@ public class ActionResponse {
             case Constants.SEARCH:
                 outputBuilder.append(Constants.SEARCH_RECOMMENDATION);
                 break;
+            default:
+                break;
         }
-        if(status) {
+        if (status) {
             outputBuilder.append(Constants.RECOMMENDATION_RESULT_BEGIN);
-            if (action.getType().equals(Constants.SEARCH)){
+            if (action.getType().equals(Constants.SEARCH)) {
                 int listIndex = 1;
                 outputBuilder.append("[");
                 for (Video v : videoList) {
@@ -167,12 +227,10 @@ public class ActionResponse {
                     listIndex++;
                 }
                 outputBuilder.append("]");
-            }
-            else {
+            } else {
                 outputBuilder.append(videoList.get(0).getTitle());
             }
-        }
-        else {
+        } else {
             outputBuilder.append(Constants.RECOMMENDATION_FAIL);
         }
         return outputBuilder.toString();

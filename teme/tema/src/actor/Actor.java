@@ -1,19 +1,18 @@
 package actor;
 
-import Entities.Video;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Actor {
+public final class Actor {
     private String name;
-    String careerDescription;
-    List<String> filmography;
-    private Map<ActorsAwards, Integer> awards;
+    private String careerDescription;
+    private final List<String> filmography;
+    private final Map<ActorsAwards, Integer> awards;
 
-    public Actor(String name, String careerDescription, List<String> filmography, Map<ActorsAwards, Integer> awards) {
+    public Actor(final String name, final String careerDescription,
+                 final List<String> filmography, final Map<ActorsAwards, Integer> awards) {
         this.name = name;
         this.careerDescription = careerDescription;
         this.filmography = new ArrayList<String>(filmography);
@@ -26,10 +25,10 @@ public class Actor {
     public String getCareerDescription() {
         return careerDescription;
     }
-    public void setCareerDescription(String careerDescription) {
+    public void setCareerDescription(final String careerDescription) {
         this.careerDescription = careerDescription;
     }
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
     public Map<ActorsAwards, Integer> getAwards() {
