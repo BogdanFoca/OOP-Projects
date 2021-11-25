@@ -1,16 +1,20 @@
 package main;
 
+import Action.Command.Command;
+import Action.Queries.ActorQuery;
+import Action.Queries.UserQuery;
+import Action.Queries.VideoQuery;
+import Action.Recommandations.PremiumRecommendation;
+import Action.Recommandations.StandardRecommendation;
 import Database.Database;
-import Entities.Movie;
-import Entities.Pair;
-import Entities.Show;
-import Entities.User;
+import Entities.*;
 import actor.Actor;
 import checker.Checkstyle;
 import checker.Checker;
 import common.Constants;
 import fileio.*;
 import org.json.simple.JSONArray;
+import utils.ActionResponse;
 
 import java.io.File;
 import java.io.IOException;
@@ -46,7 +50,6 @@ public final class Main {
 
         Checker checker = new Checker();
         checker.deleteFiles(outputDirectory.listFiles());
-
         for (File file : Objects.requireNonNull(directory.listFiles())) {
 
             String filepath = Constants.OUT_PATH + file.getName();
@@ -76,20 +79,50 @@ public final class Main {
         JSONArray arrayResult = new JSONArray();
 
         //TODO add here the entry point to your implementation
+        Database.getInstance().clearDatabase();
+
         for(MovieInputData movie : input.getMovies()){
-            Database.GetInstance().movies.add(new Movie(movie.getTitle(), movie.getYear(), movie.getGenres(), movie.getCast(), movie.getDuration()));
+            Database.getInstance().addMovie(new Movie(movie.getTitle(), movie.getYear(), movie.getGenres(), movie.getCast(), movie.getDuration()));
         }
         for(SerialInputData show : input.getSerials()){
-            Database.GetInstance().shows.add(new Show(show.getTitle(), show.getYear(), show.getGenres(), show.getCast(), show.getNumberSeason(), show.getSeasons()));
+            Database.getInstance().addShow(new Show(show.getTitle(), show.getYear(), show.getGenres(), show.getCast(), show.getNumberSeason(), show.getSeasons()));
         }
         for(UserInputData user : input.getUsers()){
-            Database.GetInstance().users.add(new User(user.getUsername(), user.getSubscriptionType(), user.getHistory(), user.getFavoriteMovies()));
+            Database.getInstance().users.add(new User(user.getUsername(), user.getSubscriptionType(), user.getHistory(), user.getFavoriteMovies()));
         }
         for(ActorInputData actor : input.getActors()){
-            Database.GetInstance().actors.add(new Actor(actor.getName(), actor.getCareerDescription(), actor.getFilmography(), actor.getAwards()));
+            Database.getInstance().actors.add(new Actor(actor.getName(), actor.getCareerDescription(), actor.getFilmography(), actor.getAwards()));
         }
         for(ActionInputData actionInputData : input.getCommands()){
-
+            ActionResponse actionResponse = new ActionResponse();
+            switch (actionInputData.getActionType()){
+                case Constants.COMMAND:
+                    actionResponse = Command.solveCommands(actionInputData, Database.getInstance().users.stream().filter(u -> u.getUsername().equals(actionInputData.getUsername())).findFirst().orElse(null));
+                    break;
+                case Constants.QUERY:
+                    switch(actionInputData.getObjectType()){
+                        case Constants.ACTORS:
+                            actionResponse = ActorQuery.solveQuery(actionInputData);
+                            break;
+                        case Constants.USERS:
+                            actionResponse = UserQuery.solveQuery(actionInputData);
+                            break;
+                        case Constants.MOVIES: case Constants.SHOWS:
+                            actionResponse = VideoQuery.solveQuery(actionInputData);
+                            break;
+                    }
+                    break;
+                case Constants.RECOMMENDATION:
+                    User user = Database.getInstance().users.stream().filter(u -> u.getUsername().equals(actionInputData.getUsername())).findFirst().orElse(null);
+                    if(user.getUserType() == UserType.BASIC){
+                        actionResponse = StandardRecommendation.solveRecommendation(actionInputData, user);
+                    }
+                    else{
+                        actionResponse = PremiumRecommendation.solveRecommendation(actionInputData, user);
+                    }
+                    break;
+            }
+            arrayResult.add(fileWriter.writeFile(actionResponse.getId(), "", actionResponse.getResponse()));
         }
         fileWriter.closeJSON(arrayResult);
     }

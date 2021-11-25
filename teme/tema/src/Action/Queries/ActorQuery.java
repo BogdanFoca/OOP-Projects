@@ -3,150 +3,176 @@ package Action.Queries;
 import Database.Database;
 import Entities.Video;
 import actor.Actor;
+import actor.ActorsAwards;
 import common.Constants;
 import fileio.ActionInputData;
-import fileio.ActorInputData;
 import utils.ActionResponse;
+import utils.Utils;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class ActorQuery extends Query {
 
-    public ActionResponse SolveQuery(ActionInputData action){
+    public static ActionResponse solveQuery(ActionInputData action) {
         ActionResponse actionResponse = new ActionResponse();
         actionResponse.setId(action.getActionId());
         List<Actor> sortedActorList = new ArrayList<Actor>();
-        for(Actor a : Database.GetInstance().actors){
+        for (Actor a : Database.getInstance().actors) {
             sortedActorList.add(a);
         }
+        sortedActorList.sort(new SortActorsByName());
         List<Actor> truncatedList = new ArrayList<Actor>();
-        switch(action.getCriteria()){
+        switch (action.getCriteria()) {
             case Constants.AVERAGE:
-                sortedActorList = SortActorListByAverage(sortedActorList, action);
-                if(sortedActorList.size() == 0){
-                    actionResponse.setResponse(Constants.NO_QUERY);
-                }
-                else{
-                    int index = 1;
-                    List<Actor> responseList = new ArrayList<>();
-                    for (Actor a : sortedActorList) {
-                        double ratingOverall = 0;
-                        for (String v : a.GetFilmography()) {
-                            Video video = Database.GetInstance().movies.stream().filter(m -> m.GetTitle().equals(v)).findAny().orElse(null);
-                            if(video == null){
-                                video = Database.GetInstance().shows.stream().filter(m -> m.GetTitle().equals(v)).findAny().orElse(null);
-                            }
-                            ratingOverall += video.GetRating();
+                sortedActorList = sortActorListByAverage(sortedActorList, action);
+                List<Actor> responseList = new ArrayList<>();
+                for (Actor a : sortedActorList) {
+                    double ratingOverall = 0;
+                    int size = 0;
+                    for (String v : a.getFilmography()) {
+                        Video video = Database.getInstance().movies.stream().filter(m -> m.getTitle().equals(v)).findAny().orElse(null);
+                        if (video == null) {
+                            video = Database.getInstance().shows.stream().filter(m -> m.getTitle().equals(v)).findAny().orElse(null);
                         }
-                        if (ratingOverall != 0) {
-                            if (index <= action.getNumber()) {
-                                responseList.add(a);
-                            }
-                            index++;
+                        if (video != null && video.getRating() > 0) {
+                            //System.out.println(video.getRating());
+                            ratingOverall += video.getRating();
+                            size++;
                         }
                     }
+                    if (size > 0) {
+                        ratingOverall /= size;
+                    }
+                    else {
+                        ratingOverall = 0;
+                    }
+                    if (ratingOverall > 0) {
+                        responseList.add(a);
+                    }
                 }
+                sortedActorList = responseList;
                 break;
             case Constants.AWARDS:
                 sortedActorList = SortActorListByAwards(sortedActorList, action);
                 break;
             case Constants.FILTER_DESCRIPTIONS:
-                sortedActorList = SortActorListByFilters(sortedActorList, action);
+                sortedActorList = sortActorListByFilters(sortedActorList, action);
                 break;
         }
-        if(sortedActorList.size() == 0){
-            actionResponse.setResponse(null);
+        if (action.getCriteria().equals(Constants.AVERAGE)) {
+            for (int i = 0; i < Math.min(action.getNumber(), sortedActorList.size()); i++) {
+                truncatedList.add(sortedActorList.get(i));
+            }
+            actionResponse.setResponse(actionResponse.outputActorsQuery(action, truncatedList));
         }
-        else{
-            if(action.getCriteria().equals(Constants.AVERAGE)) {
-                for (int i = 0; i < Math.min(action.getNumber(), sortedActorList.size()); i++) {
-                    truncatedList.add(sortedActorList.get(i));
-                }
-                actionResponse.setResponse(actionResponse.OutputActorsQuery(action, truncatedList));
-            }
-            else {
-                actionResponse.setResponse(actionResponse.OutputActorsQuery(action, sortedActorList));
-            }
+        else {
+            actionResponse.setResponse(actionResponse.outputActorsQuery(action, sortedActorList));
         }
 
         return actionResponse;
     }
 
-    List<Actor> SortActorListByAverage(List<Actor> actors, ActionInputData action){
+    static List<Actor> sortActorListByAverage(List<Actor> actors, ActionInputData action) {
         List<Actor> sorted = new ArrayList<Actor>(actors);
         sorted.sort(new SortActorsByName());
         sorted.sort(new SortActorsByRating());
-        if(action.getSortType().equals(Constants.DESC)){
+        if (action.getSortType().equals(Constants.DESC)) {
             Collections.reverse(sorted);
         }
         return sorted;
     }
 
-    List<Actor> SortActorListByAwards(List<Actor> actors, ActionInputData action){
+    static List<Actor> SortActorListByAwards(List<Actor> actors, ActionInputData action) {
         List<Actor> filtered = new ArrayList<Actor>(actors);
-        for(String award : action.getFilters().get(0)) {
-            filtered.removeIf(actor -> !actor.getAwards().containsKey(award));
+        for (String award : action.getFilters().get(3)) {
+            filtered.removeIf(actor -> !actor.getAwards().containsKey(Utils.stringToAwards(award)));
         }
         filtered.sort(new SortActorsByAwards());
-        if(action.getSortType().equals(Constants.DESC)){
+        if (action.getSortType().equals(Constants.DESC)) {
             Collections.reverse(filtered);
         }
         return filtered;
     }
+    static boolean containsWord(String mainString, String word) {
 
-    List<Actor> SortActorListByFilters(List<Actor> actors, ActionInputData action){
+        Pattern pattern = Pattern.compile("\\b" + word + "\\b", Pattern.CASE_INSENSITIVE); // "\\b" represents any word boundary.
+        Matcher matcher = pattern.matcher(mainString);
+        return matcher.find();
+    }
+    static List<Actor> sortActorListByFilters(List<Actor> actors, ActionInputData action) {
         List<Actor> filtered = new ArrayList<Actor>(actors);
-        for(String word : action.getFilters().get(3)){
-            for(Actor a : filtered){
-                if(a.getCareerDescription().contains(word)){
-                    filtered.remove(a);
-                }
-            }
+        for (String word : action.getFilters().get(2)) {
+            filtered = filtered.stream()
+                    .filter(a -> containsWord(a.getCareerDescription().toLowerCase(Locale.ROOT), word.toLowerCase(Locale.ROOT)))
+                    .collect(Collectors.toList());
+        }
+        //filtered.sort(new SortActorsAlphabetically());
+        if (action.getSortType().equals(Constants.DESC)) {
+            Collections.reverse(filtered);
         }
         return filtered;
     }
-}
-
-class SortActorsByName implements Comparator<Actor> {
-    @Override
-    public int compare(Actor a1, Actor a2) {
-        return a1.getName().compareTo(a2.getName());
-    }
-}
-
-class SortActorsByRating implements Comparator<Actor>{
-    @Override
-    public int compare(Actor a1, Actor a2) {
-        double ratingOverall1 = 0;
-        for (String v : a1.GetFilmography()) {
-            Video video = Database.GetInstance().movies.stream().filter(m -> m.GetTitle().equals(v)).findAny().orElse(null);
-            if(video == null){
-                video = Database.GetInstance().shows.stream().filter(m -> m.GetTitle().equals(v)).findAny().orElse(null);
-            }
-            ratingOverall1 += video.GetRating();
+    static class SortActorsByName implements Comparator<Actor> {
+        @Override
+        public int compare(Actor a1, Actor a2) {
+            return a1.getName().compareTo(a2.getName());
         }
-        ratingOverall1 /= a1.GetFilmography().size();
-
-        double ratingOverall2 = 0;
-        for (String v : a2.GetFilmography()) {
-            Video video = Database.GetInstance().movies.stream().filter(m -> m.GetTitle().equals(v)).findAny().orElse(null);
-            if(video == null){
-                video = Database.GetInstance().shows.stream().filter(m -> m.GetTitle().equals(v)).findAny().orElse(null);
-            }
-            ratingOverall2 += video.GetRating();
-        }
-        ratingOverall2 /= a2.GetFilmography().size();
-
-        return Double.compare(ratingOverall1, ratingOverall2);
     }
-}
 
-class SortActorsByAwards implements Comparator<Actor>{
-    @Override
-    public int compare(Actor a1, Actor a2){
-        return Integer.compare(a1.getAwards().size(), a2.getAwards().size());
+    static class SortActorsByRating implements Comparator<Actor> {
+        @Override
+        public int compare(Actor a1, Actor a2) {
+            double ratingOverall1 = 0;
+            int size = 0;
+            for (String v : a1.getFilmography()) {
+                Video video = Database.getInstance().movies.stream().filter(m -> m.getTitle().equals(v)).findAny().orElse(null);
+                if (video == null) {
+                    video = Database.getInstance().shows.stream().filter(m -> m.getTitle().equals(v)).findAny().orElse(null);
+                }
+                if (video != null) {
+                    if (video.getRating() != 0) {
+                        ratingOverall1 += video.getRating();
+                        size++;
+                    }
+                }
+            }
+            ratingOverall1 /= size;
+
+            double ratingOverall2 = 0;
+            int size2 = 0;
+            for (String v : a2.getFilmography()) {
+                Video video = Database.getInstance().movies.stream().filter(m -> m.getTitle().equals(v)).findAny().orElse(null);
+                if (video == null) {
+                    video = Database.getInstance().shows.stream().filter(m -> m.getTitle().equals(v)).findAny().orElse(null);
+                }
+                if (video != null) {
+                    if (video.getRating() != 0) {
+                        ratingOverall2 += video.getRating();
+                        size2++;
+                    }
+                }
+            }
+            ratingOverall2 /= size2;
+
+            return Double.compare(ratingOverall1, ratingOverall2);
+        }
+    }
+
+    static class SortActorsByAwards implements Comparator<Actor> {
+        @Override
+        public int compare(Actor a1, Actor a2) {
+            int size1 = 0;
+            for (Map.Entry<ActorsAwards, Integer> entry : a1.getAwards().entrySet()) {
+                size1 += entry.getValue();
+            }
+            int size2 = 0;
+            for (Map.Entry<ActorsAwards, Integer> entry : a2.getAwards().entrySet()) {
+                size2 += entry.getValue();
+            }
+            return Integer.compare(size1, size2);
+        }
     }
 }

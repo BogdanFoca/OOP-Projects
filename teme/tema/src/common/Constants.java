@@ -64,6 +64,7 @@ public final class Constants {
     public static final String BEST_UNSEEN = "best_unseen";
     public static final String POPULAR = "popular";
     public static final String SEARCH = "search";
+    public static final String FAVORITE = "favorite";
 
     public static final String ASC = "asc";
     public static final String DESC = "desc";
@@ -89,6 +90,22 @@ public final class Constants {
 
     // add any constants you think you may use
     public static final String NO_QUERY = "query_no_values";
-    public static final String QUERY_RESULT_BEGIN = "query_result_begin ";
-    public static final String QUERY_RESULT_END = " query_result_end";
+    public static final String QUERY_RESULT_BEGIN = "Query result: [";
+    public static final String QUERY_RESULT_END = "]";
+    public static final String NOT_SEEN = " is not seen";
+    public static final String ALREADY_FAV = " is already in favourite list";
+    public static final String ADDED_FAV = " was added as favourite";
+    public static final String ERROR = "error";
+    public static final String SUCCESS = "success";
+    public static final String VIEWED = " was viewed with total views of ";
+    public static final String WAS_RATED = " was rated with ";
+    public static final String BY = " by ";
+    public static final String ALREADY_RATED = " has been already rated";
+    public static final String STANDARD_RECOMMEDATION = "StandardRecommendation";
+    public static final String BEST_UNSEEN_RECOMMENDATION = "BestRatedUnseenRecommendation";
+    public static final String POPULAR_RECOMMENDATION = "PopularRecommendation";
+    public static final String FAVORITE_RECOMMENDATION = "FavoriteRecommendation";
+    public static final String SEARCH_RECOMMENDATION = "SearchRecommendation";
+    public static final String RECOMMENDATION_FAIL = " cannot be applied!";
+    public static final String RECOMMENDATION_RESULT_BEGIN = " result: ";
 }

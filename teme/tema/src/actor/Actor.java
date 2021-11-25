@@ -13,7 +13,7 @@ public class Actor {
     List<String> filmography;
     private Map<ActorsAwards, Integer> awards;
 
-    public Actor(String name, String careerDescription, List<String> filmography, Map<ActorsAwards, Integer> awards){
+    public Actor(String name, String careerDescription, List<String> filmography, Map<ActorsAwards, Integer> awards) {
         this.name = name;
         this.careerDescription = careerDescription;
         this.filmography = new ArrayList<String>(filmography);
@@ -32,10 +32,10 @@ public class Actor {
     public void setName(String name) {
         this.name = name;
     }
-    public Map<ActorsAwards, Integer> getAwards(){
+    public Map<ActorsAwards, Integer> getAwards() {
         return awards;
     }
-    public List<String> GetFilmography(){
+    public List<String> getFilmography() {
         return filmography;
     }
 }

@@ -1,6 +1,5 @@
 package Action.Queries;
 
-import Entities.Video;
 import common.Constants;
 import Database.Database;
 import Entities.User;
@@ -11,46 +10,51 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserQuery extends Query {
-    public ActionResponse SolveQuery(ActionInputData action) {
+    public static ActionResponse solveQuery(ActionInputData action) {
         ActionResponse response = new ActionResponse();
         response.setId(action.getActionId());
         List<User> sortedList = new ArrayList<User>();
         List<User> truncatedList = new ArrayList<User>();
-        for(User u : Database.GetInstance().users){
+        for (User u : Database.getInstance().users) {
             sortedList.add(u);
         }
-        switch(action.getCriteria()){
+        switch (action.getCriteria()) {
             case Constants.NUM_RATINGS:
-                sortedList = SortUserListByNumberOfReviews(action, sortedList);
+                sortedList.sort(new SortUserAlphabetically());
+                sortedList = sortUserListByNumberOfReviews(action, sortedList);
                 break;
         }
-        if(sortedList.size() == 0){
-            response.setResponse(null);
+        sortedList = sortedList.stream().filter(u -> u.getNumberOfReviews() > 0).collect(Collectors.toList());
+        for (int i = 0; i < Math.min(action.getNumber(), sortedList.size()); i++) {
+            truncatedList.add(sortedList.get(i));
         }
-        else{
-            for (int i = 0; i < Math.min(action.getNumber(), sortedList.size()); i++) {
-                truncatedList.add(sortedList.get(i));
-            }
-            response.setResponse(response.OutputUsersQuery(action, truncatedList));
-        }
+        response.setResponse(response.outputUsersQuery(action, truncatedList));
         return response;
     }
 
-    List<User> SortUserListByNumberOfReviews(ActionInputData action, List<User> userList){
+    static List<User> sortUserListByNumberOfReviews(ActionInputData action, List<User> userList) {
         List<User> sortedList = new ArrayList<User>(userList);
         sortedList.sort(new SortUserByNumberOfRatings());
-        if(action.getSortType().equals(Constants.DESC)){
+        if (action.getSortType().equals(Constants.DESC)) {
             Collections.reverse(sortedList);
         }
         return sortedList;
     }
-}
-
-class SortUserByNumberOfRatings implements Comparator<User>{
-    @Override
-    public int compare(User u1, User u2){
-        return Integer.compare(u1.GetNumberOfReviews(), u2.GetNumberOfReviews());
+    static class SortUserByNumberOfRatings implements Comparator<User> {
+        @Override
+        public int compare(User u1, User u2) {
+            return Integer.compare(u1.getNumberOfReviews(), u2.getNumberOfReviews());
+        }
+    }
+    static class SortUserAlphabetically implements Comparator<User> {
+        @Override
+        public int compare(User u1, User u2) {
+            return u1.getUsername().compareTo(u2.getUsername());
+        }
     }
 }
+
+

@@ -14,54 +14,58 @@ public class Video extends Object {
 
     int duration;
 
-    double rating;
+    double rating = 0;
 
     int views = 0;
     int favoriteCount = 0;
 
-    public String GetTitle(){
+    public String getTitle() {
         return title;
+    }
+
+    public int getReleaseYear() {
+        return releaseYear;
     }
 
     @Override
     public boolean equals(Object obj) {
         Video v = (Video)obj;
-        return v.GetTitle().equals(GetTitle());
+        return v.getTitle().equals(getTitle());
     }
 
-    public double GetRating(){
+    public double getRating() {
         return rating;
     }
 
-    public void SetRating(double rating){
+    public void setRating(double rating) {
         this.rating = rating;
     }
 
-    public List<Genre> GetGenres(){
+    public List<Genre> getGenres() {
         return genres;
     }
 
-    public int GetDuration(){
+    public int getDuration() {
         return duration;
     }
 
-    public void IncrementViews(){
+    public void incrementViews() {
         views += 1;
     }
 
-    public void IncrementViews(int no){
+    public void incrementViews(int no) {
         views += no;
     }
 
-    public void IncrementFavoriteCount(){
+    public void incrementFavoriteCount() {
         favoriteCount++;
     }
 
-    public int GetViews(){
+    public int getViews() {
         return views;
     }
 
-    public int GetFavoriteCount(){
+    public int getFavoriteCount() {
         return favoriteCount;
     }
 }
