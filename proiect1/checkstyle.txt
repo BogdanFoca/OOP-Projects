@@ -1,2 +1,23 @@
 Starting audit...
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\database\Database.java:11:21: Variable 'instance' must be private and have accessor methods. [VisibilityModifier]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\database\Database.java:17:5: Missing a Javadoc comment. [MissingJavadocMethod]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\database\Database.java:28:29: Parameter children should be final. [FinalParameters]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\database\Database.java:36:26: Parameter gifts should be final. [FinalParameters]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\database\Database.java:44:27: Parameter cities should be final. [FinalParameters]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Child.java:22:13: Parameter id should be final. [FinalParameters]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Child.java:22:21: Parameter lastName should be final. [FinalParameters]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Child.java:22:38: Parameter firstName should be final. [FinalParameters]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Child.java:22:56: Parameter age should be final. [FinalParameters]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Child.java:23:13: Parameter city should be final. [FinalParameters]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Child.java:23:26: Parameter niceScore should be final. [FinalParameters]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Child.java:23:44: Parameter giftPreference should be final. [FinalParameters]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Child.java:65:5: Missing a Javadoc comment. [MissingJavadocMethod]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Child.java:66:19: '5' is a magic number. [MagicNumber]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Child.java:68:26: '12' is a magic number. [MagicNumber]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Child.java:70:26: '18' is a magic number. [MagicNumber]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Gift.java:10:17: Parameter productName should be final. [FinalParameters]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Gift.java:10:37: Parameter price should be final. [FinalParameters]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\entities\Gift.java:10:51: Parameter category should be final. [FinalParameters]
+[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\simulation\SimulationManager.java:14:34: Must have at least one statement. [EmptyBlock]
 Audit done.
+Checkstyle ends with 20 errors.
