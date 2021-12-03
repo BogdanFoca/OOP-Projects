@@ -16,6 +16,7 @@ public final class Child {
     private final List<Double> niceScores = new ArrayList<Double>();
     private double averageNiceScore = 0;
     private final List<Category> giftPreference = new ArrayList<Category>();
+    private final List<Gift> receivedGifts = new ArrayList<Gift>();
 
     private ChildCategory childCategory;
 
@@ -106,5 +107,9 @@ public final class Child {
             default:
                 break;
         }
+    }
+
+    public void receiveGift(Gift gift) {
+        receivedGifts.add(gift);
     }
 }
