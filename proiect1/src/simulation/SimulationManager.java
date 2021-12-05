@@ -9,6 +9,7 @@ import utils.AnnualChange;
 import utils.Comparers;
 import utils.JSONReader;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +32,26 @@ public final class SimulationManager {
     }
 
     void round0() {
+        updateBudgets();
+        giveGifts();
+    }
+
+    void roundYear(AnnualChange annualChange) {
+        updateData(annualChange);
+        updateBudgets();
+    }
+
+    Gift getAppropriateGift(double budget, Category category) {
+        List<Gift> giftsInCategory = new ArrayList<Gift>(Database.getInstance().getGifts());
+        giftsInCategory = giftsInCategory.stream().filter(g -> g.getCategory().equals(category)).collect(Collectors.toList());
+        giftsInCategory.sort(new Comparers.CompareGiftsByPrice());
+        if (giftsInCategory.size() == 0 || giftsInCategory.get(0).getPrice() > budget) {
+            return null;
+        }
+        return giftsInCategory.get(0);
+    }
+
+    void updateBudgets() {
         List<Child> children = Database.getInstance().getChildren();
         double averageScore = 0;
         for (Child c : children) {
@@ -43,6 +64,10 @@ public final class SimulationManager {
         for (Child c: children) {
             budgetByChild.put(c, c.getAverageNiceScore() * budgetUnit);
         }
+    }
+
+    void giveGifts() {
+        List<Child> children = Database.getInstance().getChildren();
         for (Child c : children) {
             if (c.getAverageNiceScore() >= 0) {
                 for (Category cat : c.getGiftPreference()) {
@@ -57,24 +82,32 @@ public final class SimulationManager {
         }
     }
 
-    void roundYear(AnnualChange annualChange) {
+    void updateData(AnnualChange annualChange) {
         List<Child> children = Database.getInstance().getChildren();
         for (Child c : children) {
             c.incrementAge();
+            c.setChildCategory();
             if (c.getChildCategory() == ChildCategory.Young_Adult) {
                 children.remove(c);
             }
         }
-
-    }
-
-    Gift getAppropriateGift(double budget, Category category) {
-        List<Gift> giftsInCategory = new ArrayList<Gift>(Database.getInstance().getGifts());
-        giftsInCategory = giftsInCategory.stream().filter(g -> g.getCategory().equals(category)).collect(Collectors.toList());
-        giftsInCategory.sort(new Comparers.CompareGiftsByPrice());
-        if (giftsInCategory.size() == 0 || giftsInCategory.get(0).getPrice() > budget) {
-            return null;
+        for (Child c : annualChange.getNewChildren()) {
+            c.setChildCategory();
+            if(c.getChildCategory() != ChildCategory.Young_Adult) {
+                children.add(c);
+            }
         }
-        return giftsInCategory.get(0);
+        for (AnnualChange.ChildUpdate cu : annualChange.getChildrenUpdates()) {
+            Child child = Database.getInstance().getChildren().stream().filter(c -> c.getId() == cu.getId()).findFirst().orElse(null);
+            if (child != null) {
+                if(cu.getNiceScore() != null) {
+                    child.addNiceScore(cu.getNiceScore());
+                }
+            }
+            for (Category c : cu.getNewPreferences()) {
+                child.addNewPreference(c);
+            }
+        }
+        Database.getInstance().getGifts().addAll(annualChange.getNewGifts());
     }
 }

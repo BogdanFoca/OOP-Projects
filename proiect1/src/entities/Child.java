@@ -22,7 +22,7 @@ public final class Child {
 
     public Child(
             int id, String lastName, String firstName, int age,
-            Cities city, double niceScore, List<Category> giftPreference) {
+            Cities city, Double niceScore, List<Category> giftPreference) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -95,10 +95,10 @@ public final class Child {
                 break;
             case Teen:
                 double sump = 0;
-                for (Double d : niceScores) {
-                    sump += d;
+                for (int i = 0; i < niceScores.size(); i++) {
+                    sump += niceScores.get(i) * (i + 1);
                 }
-                sump /= niceScores.size();
+                sump /= niceScores.size() * (niceScores.size() + 1) / 2;
                 averageNiceScore = sump;
                 break;
             case Young_Adult:
@@ -116,5 +116,17 @@ public final class Child {
     public void incrementAge() {
         age++;
         setChildCategory();
+    }
+
+    public void addNiceScore(Double niceScore) {
+        niceScores.add(niceScore);
+        setAverageNiceScore();
+    }
+
+    public void addNewPreference(Category category) {
+        if (giftPreference.contains(category)) {
+            giftPreference.remove(category);
+        }
+        giftPreference.add(0, category);
     }
 }
