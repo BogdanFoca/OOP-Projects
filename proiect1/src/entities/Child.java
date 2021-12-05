@@ -11,17 +11,17 @@ public final class Child {
     private final int id;
     private final String lastName;
     private final String firstName;
-    private final double age;
+    private int age;
     private final Cities city;
     private final List<Double> niceScores = new ArrayList<Double>();
     private double averageNiceScore = 0;
-    private final List<Category> giftPreference = new ArrayList<Category>();
+    private final List<Category> giftPreference;
     private final List<Gift> receivedGifts = new ArrayList<Gift>();
 
     private ChildCategory childCategory;
 
     public Child(
-            int id, String lastName, String firstName, double age,
+            int id, String lastName, String firstName, int age,
             Cities city, double niceScore, List<Category> giftPreference) {
         this.id = id;
         this.lastName = lastName;
@@ -29,7 +29,7 @@ public final class Child {
         this.age = age;
         this.city = city;
         niceScores.add(niceScore);
-        //this.giftPreference = giftPreference;
+        this.giftPreference = giftPreference;
     }
 
     public int getId() {
@@ -111,5 +111,10 @@ public final class Child {
 
     public void receiveGift(Gift gift) {
         receivedGifts.add(gift);
+    }
+
+    public void incrementAge() {
+        age++;
+        setChildCategory();
     }
 }

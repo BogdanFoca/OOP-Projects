@@ -4,7 +4,10 @@ import database.Database;
 import entities.Child;
 import entities.Gift;
 import enums.Category;
+import enums.ChildCategory;
+import utils.AnnualChange;
 import utils.Comparers;
+import utils.JSONReader;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,11 +16,18 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public final class SimulationManager {
-    private List<Double> niceScores = new ArrayList<Double>();
-    private Map<Child, Double> budgetByChild = new HashMap<Child, Double>();
+    private final List<Double> niceScores = new ArrayList<Double>();
+    private final Map<Child, Double> budgetByChild = new HashMap<Child, Double>();
 
     public Map<Child, Double> getBudgetByChild() {
         return budgetByChild;
+    }
+
+    void startSimulation(JSONReader jsonReader) {
+        round0();
+        for (int i = 0; i < jsonReader.getNumberOfYears(); i++) {
+            roundYear(jsonReader.getAnnualChanges().get(i));
+        }
     }
 
     void round0() {
@@ -34,15 +44,28 @@ public final class SimulationManager {
             budgetByChild.put(c, c.getAverageNiceScore() * budgetUnit);
         }
         for (Child c : children) {
-            for (Category cat : c.getGiftPreference()) {
-                Gift gift = getAppropriateGift(budgetByChild.get(c.getFirstName()), cat);
-                if(gift != null) {
-                    c.receiveGift(gift);
-                    budgetByChild.put(c, budgetByChild.get(c) - gift.getPrice());
-                    Database.getInstance().getGifts().remove(gift);
+            if (c.getAverageNiceScore() >= 0) {
+                for (Category cat : c.getGiftPreference()) {
+                    Gift gift = getAppropriateGift(budgetByChild.get(c), cat);
+                    if (gift != null) {
+                        c.receiveGift(gift);
+                        budgetByChild.put(c, budgetByChild.get(c) - gift.getPrice());
+                        Database.getInstance().getGifts().remove(gift);
+                    }
                 }
             }
         }
+    }
+
+    void roundYear(AnnualChange annualChange) {
+        List<Child> children = Database.getInstance().getChildren();
+        for (Child c : children) {
+            c.incrementAge();
+            if (c.getChildCategory() == ChildCategory.Young_Adult) {
+                children.remove(c);
+            }
+        }
+
     }
 
     Gift getAppropriateGift(double budget, Category category) {
