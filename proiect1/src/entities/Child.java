@@ -44,7 +44,7 @@ public final class Child {
         return firstName;
     }
 
-    public double getAge() {
+    public int getAge() {
         return age;
     }
 

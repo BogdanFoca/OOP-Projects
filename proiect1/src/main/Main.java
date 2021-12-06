@@ -1,6 +1,9 @@
 package main;
 
 import checker.Checker;
+import simulation.SimulationManager;
+import utils.JSONOutput;
+import utils.JSONReader;
 
 /**
  * Class used to run the code
@@ -16,6 +19,8 @@ public final class Main {
      *          the arguments used to call the main method
      */
     public static void main(final String[] args) {
+        JSONReader jsonReader = new JSONReader();
+        JSONOutput jsonOutput = SimulationManager.getInstance().startSimulation(jsonReader);
         Checker.calculateScore();
     }
 }
