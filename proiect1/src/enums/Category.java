@@ -22,10 +22,18 @@ public enum Category {
     @JsonProperty("Toys")
     TOYS("Toys");
 
-    private final String value;
+    public final String value;
 
     Category(final String value) {
         this.value = value;
     }
 
+    public static Category valueOfCategoryLabel(String label) {
+        for (Category c : values()) {
+            if (c.value.equals(label)) {
+                return c;
+            }
+        }
+        return null;
+    }
 }

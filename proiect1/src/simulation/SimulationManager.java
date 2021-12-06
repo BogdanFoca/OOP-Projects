@@ -53,12 +53,18 @@ public final class SimulationManager {
                     c.getFirstName(),
                     c.getCity(),
                     c.getAge(),
-                    c.getGiftPreference(),
-                    c.getNiceScores().get(0),
+                    c.getGiftsPreferences(),
+                    c.getAverageScore(),
+                    c.getNiceScoreHistory(),
                     budgetByChild.get(c)
             ));
         }
         giveGifts(outputChildren);
+        for (int i = outputChildren.size() - 1; i >= 0; i--) {
+            if (outputChildren.get(i).getAge() > 18) {
+                outputChildren.remove(i);
+            }
+        }
         jsonOutput.addOutputChildren(outputChildren);
     }
 
@@ -73,12 +79,19 @@ public final class SimulationManager {
                     c.getFirstName(),
                     c.getCity(),
                     c.getAge(),
-                    c.getGiftPreference(),
-                    c.getNiceScores().get(0),
+                    c.getGiftsPreferences(),
+                    c.getAverageScore(),
+                    c.getNiceScoreHistory(),
                     budgetByChild.get(c)
             ));
+            //outputChildren.add(new Child(c));
         }
         giveGifts(outputChildren);
+        for (int i = outputChildren.size() - 1; i >= 0; i--) {
+            if (outputChildren.get(i).getAge() > 18) {
+                outputChildren.remove(i);
+            }
+        }
         jsonOutput.addOutputChildren(outputChildren);
     }
 
@@ -98,26 +111,27 @@ public final class SimulationManager {
         for (Child c : children) {
             c.setChildCategory();
             c.setAverageNiceScore();
-            averageScore += c.getAverageNiceScore();
+            averageScore += c.getAverageScore();
         }
         averageScore /= Database.getInstance().getChildren().size();
         double budgetUnit = Database.getInstance().getSantaBudget() / averageScore;
         for (Child c: children) {
-            budgetByChild.put(c, c.getAverageNiceScore() * budgetUnit);
+            budgetByChild.put(c, c.getAverageScore() * budgetUnit);
+            c.setAssignedBudget(c.getAverageScore() * budgetUnit);
         }
     }
 
     void giveGifts(List<JSONOutput.OutputChild> outputChildren) {
         List<Child> children = Database.getInstance().getChildren();
         for (int i = 0; i < children.size(); i++) {
-            if (children.get(i).getAverageNiceScore() >= 0) {
-                for (Category cat : children.get(i).getGiftPreference()) {
+            if (children.get(i).getAverageScore() >= 0) {
+                for (Category cat : children.get(i).getGiftsPreferences()) {
                     Gift gift = getAppropriateGift(budgetByChild.get(children.get(i)), cat);
                     if (gift != null) {
                         children.get(i).receiveGift(gift);
                         outputChildren.get(i).addGift(gift);
                         budgetByChild.put(children.get(i), budgetByChild.get(children.get(i)) - gift.getPrice());
-                        Database.getInstance().getGifts().remove(gift);
+                        //Database.getInstance().getGifts().remove(gift);
                     }
                 }
             }
@@ -125,17 +139,18 @@ public final class SimulationManager {
     }
 
     void updateData(AnnualChange annualChange) {
+        Database.getInstance().setSantaBudget(annualChange.getNewBudget());
         List<Child> children = Database.getInstance().getChildren();
-        for (Child c : children) {
-            c.incrementAge();
-            c.setChildCategory();
-            if (c.getChildCategory() == ChildCategory.Young_Adult) {
-                children.remove(c);
+        for (int i = children.size() - 1; i >= 0; i--) {
+            children.get(i).incrementAge();
+            children.get(i).setChildCategory();
+            if (children.get(i).categoryOfChild() == ChildCategory.Young_Adult) {
+                children.remove(children.get(i));
             }
         }
         for (Child c : annualChange.getNewChildren()) {
             c.setChildCategory();
-            if(c.getChildCategory() != ChildCategory.Young_Adult) {
+            if(c.categoryOfChild() != ChildCategory.Young_Adult) {
                 children.add(c);
             }
         }
@@ -145,9 +160,11 @@ public final class SimulationManager {
                 if(cu.getNiceScore() != null) {
                     child.addNiceScore(cu.getNiceScore());
                 }
-            }
-            for (Category c : cu.getNewPreferences()) {
-                child.addNewPreference(c);
+                if(cu.getNewPreferences() != null) {
+                    for (Category c : cu.getNewPreferences()) {
+                        child.addNewPreference(c);
+                    }
+                }
             }
         }
         Database.getInstance().getGifts().addAll(annualChange.getNewGifts());

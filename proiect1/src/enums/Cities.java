@@ -11,11 +11,23 @@ public enum Cities {
     CONSTANTA("Constanta"),
 
     @JsonProperty("Buzau")
-    BUZAU("Buzau");
+    BUZAU("Buzau"),
 
-    private final String value;
+    @JsonProperty("Timisoara")
+    TIMISOARA("Timisoara");
+
+    public final String value;
 
     Cities(final String value) {
         this.value = value;
+    }
+
+    public static Cities valueOfCityLabel(String label) {
+        for (Cities c : values()) {
+            if (c.value.equals(label)) {
+                return c;
+            }
+        }
+        return null;
     }
 }

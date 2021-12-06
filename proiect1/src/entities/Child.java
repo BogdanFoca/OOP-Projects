@@ -11,12 +11,13 @@ public final class Child {
     private final int id;
     private final String lastName;
     private final String firstName;
-    private int age;
     private final Cities city;
-    private final List<Double> niceScores = new ArrayList<Double>();
-    private double averageNiceScore = 0;
-    private final List<Category> giftPreference;
-    private final List<Gift> receivedGifts = new ArrayList<Gift>();
+    private int age;
+    private List<Category> giftsPreferences = new ArrayList<Category>();
+    private double averageScore = 0;
+    private List<Double> niceScoreHistory = new ArrayList<Double>();
+    private Double assignedBudget;
+    private List<Gift> receivedGifts = new ArrayList<Gift>();
 
     private ChildCategory childCategory;
 
@@ -28,8 +29,22 @@ public final class Child {
         this.firstName = firstName;
         this.age = age;
         this.city = city;
-        niceScores.add(niceScore);
-        this.giftPreference = giftPreference;
+        niceScoreHistory.add(niceScore);
+        this.giftsPreferences = giftPreference;
+    }
+
+    public Child(Child c) {
+        this.id = c.id;
+        this.lastName = c.lastName;
+        this.firstName = c.firstName;
+        this.age = c.age;
+        this.city = c.city;
+        this.niceScoreHistory = new ArrayList<Double>(c.niceScoreHistory);
+        this.giftsPreferences = new ArrayList<Category>(c.giftsPreferences);
+        this.assignedBudget = new Double(c.assignedBudget);
+        this.receivedGifts = new ArrayList<Gift>(c.receivedGifts);
+        setChildCategory();
+        setAverageNiceScore();
     }
 
     public int getId() {
@@ -52,16 +67,49 @@ public final class Child {
         return city;
     }
 
-    public List<Double> getNiceScores() {
-        return niceScores;
+    public List<Double> getNiceScoreHistory() {
+        return niceScoreHistory;
     }
 
-    public List<Category> getGiftPreference() {
-        return giftPreference;
+    public List<Category> getGiftsPreferences() {
+        return giftsPreferences;
     }
 
-    public ChildCategory getChildCategory() {
+    //this has a weird name so it is not the default getter so that the JSON parser does not write it
+    public ChildCategory categoryOfChild() {
         return childCategory;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setGiftsPreferences(List<Category> giftsPreferences) {
+        this.giftsPreferences = giftsPreferences;
+    }
+
+    public void setAverageScore(double averageScore) {
+        this.averageScore = averageScore;
+    }
+
+    public void setNiceScoreHistory(List<Double> niceScoreHistory) {
+        this.niceScoreHistory = niceScoreHistory;
+    }
+
+    public List<Gift> getReceivedGifts() {
+        return receivedGifts;
+    }
+
+    public void setReceivedGifts(List<Gift> receivedGifts) {
+        this.receivedGifts = receivedGifts;
+    }
+
+    public Double getAssignedBudget() {
+        return assignedBudget;
+    }
+
+    public void setAssignedBudget(Double assignedBudget) {
+        this.assignedBudget = assignedBudget;
     }
 
     public void setChildCategory() {
@@ -76,33 +124,33 @@ public final class Child {
         }
     }
 
-    public Double getAverageNiceScore() {
-        return averageNiceScore;
+    public Double getAverageScore() {
+        return averageScore;
     }
 
     public void setAverageNiceScore() {
         switch (childCategory) {
             case Baby:
-                averageNiceScore = 10;
+                averageScore = 10;
                 break;
             case Kid:
                 double sum = 0;
-                for (Double d : niceScores) {
+                for (Double d : niceScoreHistory) {
                     sum += d;
                 }
-                sum /= niceScores.size();
-                averageNiceScore = sum;
+                sum /= niceScoreHistory.size();
+                averageScore = sum;
                 break;
             case Teen:
                 double sump = 0;
-                for (int i = 0; i < niceScores.size(); i++) {
-                    sump += niceScores.get(i) * (i + 1);
+                for (int i = 0; i < niceScoreHistory.size(); i++) {
+                    sump += niceScoreHistory.get(i) * (i + 1);
                 }
-                sump /= niceScores.size() * (niceScores.size() + 1) / 2;
-                averageNiceScore = sump;
+                sump /= niceScoreHistory.size() * (niceScoreHistory.size() + 1) / 2;
+                averageScore = sump;
                 break;
             case Young_Adult:
-                averageNiceScore = -1;
+                averageScore = -1;
                 break;
             default:
                 break;
@@ -119,14 +167,14 @@ public final class Child {
     }
 
     public void addNiceScore(Double niceScore) {
-        niceScores.add(niceScore);
+        niceScoreHistory.add(niceScore);
         setAverageNiceScore();
     }
 
     public void addNewPreference(Category category) {
-        if (giftPreference.contains(category)) {
-            giftPreference.remove(category);
+        if (giftsPreferences.contains(category)) {
+            giftsPreferences.remove(category);
         }
-        giftPreference.add(0, category);
+        giftsPreferences.add(0, category);
     }
 }

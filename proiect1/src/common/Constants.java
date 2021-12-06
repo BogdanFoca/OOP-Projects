@@ -10,6 +10,10 @@ public final class Constants {
     public static final Integer MAXIMUM_ERROR_CHECKSTYLE = 30;
     public static final Integer CHECKSTYLE_POINTS = 10;
     public static final Integer TESTS_NUMBER_SMALL = 15;
+
+    public static final String INPUT_PATH = "tests";
+    public static final String RESULT_PATH = "output";
+
     public static final String NUMBER_OF_YEARS = "numberOfYears";
     public static final String SANTA_BUDGET = "santaBudget";
     public static final String INITIAL_DATA = "initialData";
@@ -20,7 +24,7 @@ public final class Constants {
     public static final String AGE = "age";
     public static final String CITY = "city";
     public static final String NICE_SCORE = "niceScore";
-    public static final String GIFT_PREFERENCES = "giftPreferences";
+    public static final String GIFT_PREFERENCES = "giftsPreferences";
     public static final String SANTA_GIFTS_LIST = "santaGiftsList";
     public static final String PRODUCT_NAME = "productName";
     public static final String PRICE = "price";

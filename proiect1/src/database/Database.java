@@ -15,7 +15,6 @@ public final class Database {
 
     private List<Child> children = new ArrayList<Child>();
     private List<Gift> gifts = new ArrayList<Gift>();
-    private List<Cities> cities = new ArrayList<Cities>();
 
     public static Database getInstance() {
         if (instance == null) {
@@ -54,13 +53,5 @@ public final class Database {
 
     public void setGifts(List<Gift> gifts) {
         this.gifts = gifts;
-    }
-
-    public List<Cities> getCities() {
-        return cities;
-    }
-
-    public void setCities(List<Cities> cities) {
-        this.cities = cities;
     }
 }
