@@ -37,12 +37,6 @@
       <change beforePath="$PROJECT_DIR$/zzzz/test7.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test7.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zzzz/test8.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test8.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zzzz/test9.json" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test9.json" afterDir="false" />
-    </list>
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -55,6 +49,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="21jd1Mprv2ZHMevVcF8dNiFpNuV" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="21v2UmCFgudLtO2NUqgyGG5QiA1" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
