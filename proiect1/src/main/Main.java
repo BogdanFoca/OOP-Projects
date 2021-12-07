@@ -42,11 +42,13 @@ public final class Main {
 
         for (int i = 1; i < Objects.requireNonNull(directory.listFiles()).length + 1; i++) {
             File file = new File(Constants.INPUT_PATH + i + ".json");
-            Database.getInstance().clear();
-            JSONReader jsonReader = new JSONReader();
-            jsonReader.parseFile(file);
-            JSONOutput jsonOutput = SimulationManager.getInstance().startSimulation(jsonReader);
-            objectMapper.writeValue(new File(Constants.OUTPUT_PATH + i + ".json"), jsonOutput);
+            if (file.exists()) {
+                Database.getInstance().clear();
+                JSONReader jsonReader = new JSONReader();
+                jsonReader.parseFile(file);
+                JSONOutput jsonOutput = SimulationManager.getInstance().startSimulation(jsonReader);
+                objectMapper.writeValue(new File(Constants.OUTPUT_PATH + i + ".json"), jsonOutput);
+            }
         }
         Checker.calculateScore();
     }

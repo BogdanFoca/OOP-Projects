@@ -3,22 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e8073ff5-5246-4b54-8002-f4461116b67a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/checkstyle.txt" beforeDir="false" afterPath="$PROJECT_DIR$/checkstyle.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/out_18.json" beforeDir="false" afterPath="$PROJECT_DIR$/output/out_18.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/out_19.json" beforeDir="false" afterPath="$PROJECT_DIR$/output/out_19.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/out_24.json" beforeDir="false" afterPath="$PROJECT_DIR$/output/out_24.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/common/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Child.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Child.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Gift.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Gift.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enums/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enums/Cities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Cities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simulation/SimulationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/SimulationManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/AnnualChange.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/AnnualChange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Comparers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Comparers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/JSONOutput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/JSONOutput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/JSONReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/JSONReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,5 +63,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
