@@ -54,4 +54,9 @@ public final class Database {
     public void setGifts(List<Gift> gifts) {
         this.gifts = gifts;
     }
+
+    public void clear() {
+        children.clear();
+        gifts.clear();
+    }
 }

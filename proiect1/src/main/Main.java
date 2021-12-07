@@ -4,6 +4,8 @@ import checker.Checker;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import common.Constants;
+import database.Database;
+import entities.Child;
 import org.json.simple.parser.ParseException;
 import simulation.SimulationManager;
 import utils.JSONOutput;
@@ -14,7 +16,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -31,7 +32,7 @@ public final class Main {
      *          the arguments used to call the main method
      */
     public static void main(final String[] args) throws IOException, ParseException {
-        File directory = new File(Constants.INPUT_PATH);
+        File directory = new File(Constants.FOLDER_INPUT_PATH);
         Path path = Paths.get(Constants.RESULT_PATH);
         if (!Files.exists(path)) {
             Files.createDirectories(path);
@@ -39,15 +40,18 @@ public final class Main {
 
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-        int i = 1;
 
-        for (File file : Objects.requireNonNull(directory.listFiles())) {
-            //System.out.println(i);
+        for (int i = 1; i < Objects.requireNonNull(directory.listFiles()).length + 1; i++) {
+            File file = new File(Constants.INPUT_PATH + i + ".json");
+            System.out.println(file.getName());
+            Database.getInstance().clear();
             JSONReader jsonReader = new JSONReader();
             jsonReader.parseFile(file);
+            for(Child c:Database.getInstance().getChildren()) {
+                //System.out.print(c.getLastName() + " " + c.getFirstName() + "; ");
+            }
             JSONOutput jsonOutput = SimulationManager.getInstance().startSimulation(jsonReader);
             objectMapper.writeValue(new File(Constants.OUTPUT_PATH + i + ".json"), jsonOutput);
-            i++;
         }
         Checker.calculateScore();
     }

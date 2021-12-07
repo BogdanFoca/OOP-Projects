@@ -34,6 +34,7 @@ public final class SimulationManager {
     }
 
     public JSONOutput startSimulation(JSONReader jsonReader) {
+        //TODO: young adults must still be printed in round0
         jsonOutput = new JSONOutput();
         budgetByChild.clear();
         round0();
@@ -84,7 +85,6 @@ public final class SimulationManager {
                     c.getNiceScoreHistory(),
                     budgetByChild.get(c)
             ));
-            //outputChildren.add(new Child(c));
         }
         giveGifts(outputChildren);
         for (int i = outputChildren.size() - 1; i >= 0; i--) {
@@ -107,13 +107,13 @@ public final class SimulationManager {
 
     void updateBudgets() {
         List<Child> children = Database.getInstance().getChildren();
+        budgetByChild.clear();
         double averageScore = 0;
         for (Child c : children) {
             c.setChildCategory();
             c.setAverageNiceScore();
             averageScore += c.getAverageScore();
         }
-        averageScore /= Database.getInstance().getChildren().size();
         double budgetUnit = Database.getInstance().getSantaBudget() / averageScore;
         for (Child c: children) {
             budgetByChild.put(c, c.getAverageScore() * budgetUnit);
@@ -131,7 +131,6 @@ public final class SimulationManager {
                         children.get(i).receiveGift(gift);
                         outputChildren.get(i).addGift(gift);
                         budgetByChild.put(children.get(i), budgetByChild.get(children.get(i)) - gift.getPrice());
-                        //Database.getInstance().getGifts().remove(gift);
                     }
                 }
             }
@@ -148,12 +147,6 @@ public final class SimulationManager {
                 children.remove(children.get(i));
             }
         }
-        for (Child c : annualChange.getNewChildren()) {
-            c.setChildCategory();
-            if(c.categoryOfChild() != ChildCategory.Young_Adult) {
-                children.add(c);
-            }
-        }
         for (AnnualChange.ChildUpdate cu : annualChange.getChildrenUpdates()) {
             Child child = Database.getInstance().getChildren().stream().filter(c -> c.getId() == cu.getId()).findFirst().orElse(null);
             if (child != null) {
@@ -161,10 +154,14 @@ public final class SimulationManager {
                     child.addNiceScore(cu.getNiceScore());
                 }
                 if(cu.getNewPreferences() != null) {
-                    for (Category c : cu.getNewPreferences()) {
-                        child.addNewPreference(c);
-                    }
+                    child.addNewPreferences(cu.getNewPreferences());
                 }
+            }
+        }
+        for (Child c : annualChange.getNewChildren()) {
+            c.setChildCategory();
+            if(c.categoryOfChild() != ChildCategory.Young_Adult) {
+                children.add(c);
             }
         }
         Database.getInstance().getGifts().addAll(annualChange.getNewGifts());

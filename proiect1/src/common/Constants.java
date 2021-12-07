@@ -11,7 +11,8 @@ public final class Constants {
     public static final Integer CHECKSTYLE_POINTS = 10;
     public static final Integer TESTS_NUMBER_SMALL = 15;
 
-    public static final String INPUT_PATH = "tests";
+    public static final String FOLDER_INPUT_PATH = "tests";
+    public static final String INPUT_PATH = "tests/test";
     public static final String RESULT_PATH = "output";
 
     public static final String NUMBER_OF_YEARS = "numberOfYears";

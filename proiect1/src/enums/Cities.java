@@ -14,7 +14,25 @@ public enum Cities {
     BUZAU("Buzau"),
 
     @JsonProperty("Timisoara")
-    TIMISOARA("Timisoara");
+    TIMISOARA("Timisoara"),
+
+    @JsonProperty("Iasi")
+    IASI("Iasi"),
+
+    @JsonProperty("Oradea")
+    ORADEA("Oradea"),
+
+    @JsonProperty("Craiova")
+    CRAIOVA("Craiova"),
+
+    @JsonProperty("Cluj-Napoca")
+    CLUJ_NAPOCA("Cluj-Napoca"),
+
+    @JsonProperty("Braila")
+    BRAILA("Braila"),
+
+    @JsonProperty("Brasov")
+    BRASOV("Brasov");
 
     public final String value;
 

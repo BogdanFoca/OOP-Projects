@@ -30,7 +30,7 @@ public final class Child {
         this.age = age;
         this.city = city;
         niceScoreHistory.add(niceScore);
-        this.giftsPreferences = giftPreference;
+        addNewPreferences(giftPreference);
     }
 
     public Child(Child c) {
@@ -117,7 +117,7 @@ public final class Child {
             childCategory = ChildCategory.Baby;
         } else if (age < 12) {
             childCategory = ChildCategory.Kid;
-        } else if (age < 18) {
+        } else if (age <= 18) {
             childCategory = ChildCategory.Teen;
         } else {
             childCategory = ChildCategory.Young_Adult;
@@ -150,7 +150,7 @@ public final class Child {
                 averageScore = sump;
                 break;
             case Young_Adult:
-                averageScore = -1;
+                averageScore = 0;
                 break;
             default:
                 break;
@@ -171,10 +171,17 @@ public final class Child {
         setAverageNiceScore();
     }
 
-    public void addNewPreference(Category category) {
-        if (giftsPreferences.contains(category)) {
-            giftsPreferences.remove(category);
+    public void addNewPreferences(List<Category> categories) {
+        System.out.print(firstName + " " + lastName + " ");
+        for(Category c : categories) {
+            System.out.print(c.value);
         }
-        giftsPreferences.add(0, category);
+        System.out.println("");
+        for (int i = categories.size() - 1; i >= 0; i--) {
+            if (giftsPreferences.contains(categories.get(i))) {
+                giftsPreferences.remove(categories.get(i));
+            }
+            giftsPreferences.add(0, categories.get(i));
+        }
     }
 }

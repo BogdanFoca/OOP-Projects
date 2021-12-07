@@ -10,7 +10,6 @@ import java.util.List;
 public class JSONOutput {
 
     ArrayList<Children> annualChildren = new ArrayList<Children>();
-    //ArrayList<Child> annualChildren = new ArrayList<Child>();
 
     public class Children {
         ArrayList<OutputChild> children = new ArrayList<OutputChild>();
@@ -26,19 +25,7 @@ public class JSONOutput {
         public void setChildren(ArrayList<OutputChild> children) {
             this.children = children;
         }
-        /*ArrayList<Child> children;
 
-        public Children(ArrayList<Child> children) {
-            this.children = children;
-        }
-
-        public ArrayList<Child> getChildren() {
-            return children;
-        }
-
-        public void setChildren(ArrayList<Child> children) {
-            this.children = children;
-        }*/
     }
 
     public class OutputChild {
@@ -47,23 +34,21 @@ public class JSONOutput {
         String firstName;
         Cities city;
         int age;
-        List<Category> giftsPreferences;
+        List<Category> giftsPreferences = new ArrayList<Category>();
         Double averageScore;
         List<Double> niceScoreHistory = new ArrayList<Double>();
         Double assignedBudget;
         List<Gift> receivedGifts = new ArrayList<Gift>();
 
-        public OutputChild(int id, String lastName, String firstName, Cities city, int age, List<Category> giftPreferences, Double averageScore, List<Double> niceScoreHistory, Double assignedBudget) {
+        public OutputChild(int id, String lastName, String firstName, Cities city, int age, List<Category> giftsPreferences, Double averageScore, List<Double> niceScoreHistory, Double assignedBudget) {
             this.id = id;
             this.lastName = lastName;
             this.firstName = firstName;
             this.city = city;
             this.age = age;
-            this.giftsPreferences = giftPreferences;
+            this.giftsPreferences.addAll(giftsPreferences);
             this.averageScore = averageScore;
-            for (Double d : niceScoreHistory) {
-                this.niceScoreHistory.add(d);
-            }
+            this.niceScoreHistory.addAll(niceScoreHistory);
             this.assignedBudget = assignedBudget;
         }
 
@@ -163,8 +148,4 @@ public class JSONOutput {
     public void addOutputChildren(ArrayList<OutputChild> children) {
         annualChildren.add(new Children(children));
     }
-
-    /*public void addOutputChildren(ArrayList<Child> children) {
-        annualChildren.add(new Children(children));
-    }*/
 }
