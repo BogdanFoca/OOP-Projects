@@ -1,5 +1,6 @@
 package entities;
 
+import common.Constants;
 import enums.Category;
 import enums.ChildCategory;
 import enums.Cities;
@@ -14,7 +15,7 @@ public final class Child {
     private final Cities city;
     private int age;
     private List<Category> giftsPreferences = new ArrayList<Category>();
-    private double averageScore = 0;
+    private Double averageScore;
     private List<Double> niceScoreHistory = new ArrayList<Double>();
     private Double assignedBudget;
     private List<Gift> receivedGifts = new ArrayList<Gift>();
@@ -22,8 +23,8 @@ public final class Child {
     private ChildCategory childCategory;
 
     public Child(
-            int id, String lastName, String firstName, int age,
-            Cities city, Double niceScore, List<Category> giftPreference) {
+            final int id, final String lastName, final String firstName, final int age,
+            final Cities city, final Double niceScore, final List<Category> giftPreference) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -33,7 +34,7 @@ public final class Child {
         addNewPreferences(giftPreference);
     }
 
-    public Child(Child c) {
+    public Child(final Child c) {
         this.id = c.id;
         this.lastName = c.lastName;
         this.firstName = c.firstName;
@@ -41,7 +42,7 @@ public final class Child {
         this.city = c.city;
         this.niceScoreHistory = new ArrayList<Double>(c.niceScoreHistory);
         this.giftsPreferences = new ArrayList<Category>(c.giftsPreferences);
-        this.assignedBudget = new Double(c.assignedBudget);
+        this.assignedBudget = c.assignedBudget;
         this.receivedGifts = new ArrayList<Gift>(c.receivedGifts);
         setChildCategory();
         setAverageNiceScore();
@@ -75,24 +76,29 @@ public final class Child {
         return giftsPreferences;
     }
 
-    //this has a weird name so it is not the default getter so that the JSON parser does not write it
+    /**
+     *
+     * @return
+     */
+    //this has a weird name so
+    // it is not the default getter so that the JSON parser does not write it
     public ChildCategory categoryOfChild() {
         return childCategory;
     }
 
-    public void setAge(int age) {
+    public void setAge(final int age) {
         this.age = age;
     }
 
-    public void setGiftsPreferences(List<Category> giftsPreferences) {
+    public void setGiftsPreferences(final List<Category> giftsPreferences) {
         this.giftsPreferences = giftsPreferences;
     }
 
-    public void setAverageScore(double averageScore) {
+    public void setAverageScore(final double averageScore) {
         this.averageScore = averageScore;
     }
 
-    public void setNiceScoreHistory(List<Double> niceScoreHistory) {
+    public void setNiceScoreHistory(final List<Double> niceScoreHistory) {
         this.niceScoreHistory = niceScoreHistory;
     }
 
@@ -100,7 +106,7 @@ public final class Child {
         return receivedGifts;
     }
 
-    public void setReceivedGifts(List<Gift> receivedGifts) {
+    public void setReceivedGifts(final List<Gift> receivedGifts) {
         this.receivedGifts = receivedGifts;
     }
 
@@ -108,16 +114,23 @@ public final class Child {
         return assignedBudget;
     }
 
-    public void setAssignedBudget(Double assignedBudget) {
+    /**
+     *
+     * @param assignedBudget
+     */
+    public void setAssignedBudget(final Double assignedBudget) {
         this.assignedBudget = assignedBudget;
     }
 
+    /**
+     *
+     */
     public void setChildCategory() {
-        if (age < 5) {
+        if (age < Constants.BABY_AGE) {
             childCategory = ChildCategory.Baby;
-        } else if (age < 12) {
+        } else if (age < Constants.KID_AGE) {
             childCategory = ChildCategory.Kid;
-        } else if (age <= 18) {
+        } else if (age <= Constants.TEEN_AGE) {
             childCategory = ChildCategory.Teen;
         } else {
             childCategory = ChildCategory.Young_Adult;
@@ -128,13 +141,16 @@ public final class Child {
         return averageScore;
     }
 
+    /**
+     *
+     */
     public void setAverageNiceScore() {
         switch (childCategory) {
             case Baby:
-                averageScore = 10;
+                averageScore = Constants.BABY_SCORE;
                 break;
             case Kid:
-                double sum = 0;
+                Double sum = 0.0;
                 for (Double d : niceScoreHistory) {
                     sum += d;
                 }
@@ -142,41 +158,51 @@ public final class Child {
                 averageScore = sum;
                 break;
             case Teen:
-                double sump = 0;
+                Double sump = 0.0;
                 for (int i = 0; i < niceScoreHistory.size(); i++) {
                     sump += niceScoreHistory.get(i) * (i + 1);
                 }
-                sump /= niceScoreHistory.size() * (niceScoreHistory.size() + 1) / 2;
+                sump /= (double) niceScoreHistory.size() * (niceScoreHistory.size() + 1) / 2;
                 averageScore = sump;
                 break;
             case Young_Adult:
-                averageScore = 0;
+                averageScore = 0.0;
                 break;
             default:
                 break;
         }
     }
 
-    public void receiveGift(Gift gift) {
+    /**
+     *
+     * @param gift
+     */
+    public void receiveGift(final Gift gift) {
         receivedGifts.add(gift);
     }
 
+    /**
+     *
+     */
     public void incrementAge() {
         age++;
         setChildCategory();
     }
 
-    public void addNiceScore(Double niceScore) {
+    /**
+     *
+     * @param niceScore
+     */
+    public void addNiceScore(final Double niceScore) {
         niceScoreHistory.add(niceScore);
         setAverageNiceScore();
     }
 
-    public void addNewPreferences(List<Category> categories) {
-        System.out.print(firstName + " " + lastName + " ");
-        for(Category c : categories) {
-            System.out.print(c.value);
-        }
-        System.out.println("");
+    /**
+     *
+     * @param categories
+     */
+    public void addNewPreferences(final List<Category> categories) {
         for (int i = categories.size() - 1; i >= 0; i--) {
             if (giftsPreferences.contains(categories.get(i))) {
                 giftsPreferences.remove(categories.get(i));

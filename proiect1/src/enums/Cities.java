@@ -40,7 +40,12 @@ public enum Cities {
         this.value = value;
     }
 
-    public static Cities valueOfCityLabel(String label) {
+    /**
+     *
+     * @param label
+     * @return
+     */
+    public static Cities valueOfCityLabel(final String label) {
         for (Cities c : values()) {
             if (c.value.equals(label)) {
                 return c;

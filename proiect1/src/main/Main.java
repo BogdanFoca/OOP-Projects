@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import common.Constants;
 import database.Database;
-import entities.Child;
 import org.json.simple.parser.ParseException;
 import simulation.SimulationManager;
 import utils.JSONOutput;
@@ -43,13 +42,9 @@ public final class Main {
 
         for (int i = 1; i < Objects.requireNonNull(directory.listFiles()).length + 1; i++) {
             File file = new File(Constants.INPUT_PATH + i + ".json");
-            System.out.println(file.getName());
             Database.getInstance().clear();
             JSONReader jsonReader = new JSONReader();
             jsonReader.parseFile(file);
-            for(Child c:Database.getInstance().getChildren()) {
-                //System.out.print(c.getLastName() + " " + c.getFirstName() + "; ");
-            }
             JSONOutput jsonOutput = SimulationManager.getInstance().startSimulation(jsonReader);
             objectMapper.writeValue(new File(Constants.OUTPUT_PATH + i + ".json"), jsonOutput);
         }

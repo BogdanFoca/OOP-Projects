@@ -7,13 +7,14 @@ import enums.Category;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnnualChange {
-    double newBudget;
-    List<Gift> newGifts = new ArrayList<Gift>();
-    List<Child> newChildren = new ArrayList<Child>();
-    List<ChildUpdate> childrenUpdates = new ArrayList<ChildUpdate>();
+public final class AnnualChange {
+    private double newBudget;
+    private List<Gift> newGifts = new ArrayList<Gift>();
+    private List<Child> newChildren = new ArrayList<Child>();
+    private List<ChildUpdate> childrenUpdates = new ArrayList<ChildUpdate>();
 
-    public AnnualChange(double newBudget, List<Gift> newGifts, List<Child> newChildren, List<ChildUpdate> childrenUpdates) {
+    public AnnualChange(final double newBudget, final List<Gift> newGifts,
+                        final List<Child> newChildren, final List<ChildUpdate> childrenUpdates) {
         this.newBudget = newBudget;
         this.newGifts = newGifts;
         this.newChildren = newChildren;
@@ -40,12 +41,13 @@ public class AnnualChange {
         return childrenUpdates;
     }
 
-    public class ChildUpdate {
-        int id;
-        Double niceScore;
-        List<Category> newPreferences = new ArrayList<Category>();
+    public final class ChildUpdate {
+        private int id;
+        private Double niceScore;
+        private List<Category> newPreferences = new ArrayList<Category>();
 
-        public ChildUpdate(int id, Double niceScore, List<Category> newPreferences) {
+        public ChildUpdate(final int id, final Double niceScore,
+                           final List<Category> newPreferences) {
             this.id = id;
             this.niceScore = niceScore;
             this.newPreferences = newPreferences;

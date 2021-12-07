@@ -7,14 +7,14 @@ import enums.Cities;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JSONOutput {
+public final class JSONOutput {
 
-    ArrayList<Children> annualChildren = new ArrayList<Children>();
+    private ArrayList<Children> annualChildren = new ArrayList<Children>();
 
-    public class Children {
-        ArrayList<OutputChild> children = new ArrayList<OutputChild>();
+    public final class Children {
+        private ArrayList<OutputChild> children = new ArrayList<OutputChild>();
 
-        public Children(ArrayList<OutputChild> children) {
+        public Children(final ArrayList<OutputChild> children) {
             this.children = children;
         }
 
@@ -22,25 +22,28 @@ public class JSONOutput {
             return children;
         }
 
-        public void setChildren(ArrayList<OutputChild> children) {
+        public void setChildren(final ArrayList<OutputChild> children) {
             this.children = children;
         }
 
     }
 
-    public class OutputChild {
-        int id;
-        String lastName;
-        String firstName;
-        Cities city;
-        int age;
-        List<Category> giftsPreferences = new ArrayList<Category>();
-        Double averageScore;
-        List<Double> niceScoreHistory = new ArrayList<Double>();
-        Double assignedBudget;
-        List<Gift> receivedGifts = new ArrayList<Gift>();
+    public final class OutputChild {
+        private int id;
+        private String lastName;
+        private String firstName;
+        private Cities city;
+        private int age;
+        private List<Category> giftsPreferences = new ArrayList<Category>();
+        private Double averageScore;
+        private List<Double> niceScoreHistory = new ArrayList<Double>();
+        private Double assignedBudget;
+        private List<Gift> receivedGifts = new ArrayList<Gift>();
 
-        public OutputChild(int id, String lastName, String firstName, Cities city, int age, List<Category> giftsPreferences, Double averageScore, List<Double> niceScoreHistory, Double assignedBudget) {
+        public OutputChild(final int id, final String lastName, final String firstName,
+                           final Cities city, final int age, final List<Category> giftsPreferences,
+                           final Double averageScore, final List<Double> niceScoreHistory,
+                           final Double assignedBudget) {
             this.id = id;
             this.lastName = lastName;
             this.firstName = firstName;
@@ -56,7 +59,7 @@ public class JSONOutput {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(final int id) {
             this.id = id;
         }
 
@@ -64,7 +67,7 @@ public class JSONOutput {
             return lastName;
         }
 
-        public void setLastName(String lastName) {
+        public void setLastName(final String lastName) {
             this.lastName = lastName;
         }
 
@@ -72,7 +75,7 @@ public class JSONOutput {
             return firstName;
         }
 
-        public void setFirstName(String firstName) {
+        public void setFirstName(final String firstName) {
             this.firstName = firstName;
         }
 
@@ -80,7 +83,7 @@ public class JSONOutput {
             return city;
         }
 
-        public void setCity(Cities city) {
+        public void setCity(final Cities city) {
             this.city = city;
         }
 
@@ -88,7 +91,7 @@ public class JSONOutput {
             return age;
         }
 
-        public void setAge(int age) {
+        public void setAge(final int age) {
             this.age = age;
         }
 
@@ -96,7 +99,7 @@ public class JSONOutput {
             return giftsPreferences;
         }
 
-        public void setGiftsPreferences(List<Category> giftsPreferences) {
+        public void setGiftsPreferences(final List<Category> giftsPreferences) {
             this.giftsPreferences = giftsPreferences;
         }
 
@@ -104,7 +107,7 @@ public class JSONOutput {
             return averageScore;
         }
 
-        public void setAverageScore(Double averageScore) {
+        public void setAverageScore(final Double averageScore) {
             this.averageScore = averageScore;
         }
 
@@ -112,7 +115,7 @@ public class JSONOutput {
             return assignedBudget;
         }
 
-        public void setAssignedBudget(Double assignedBudget) {
+        public void setAssignedBudget(final Double assignedBudget) {
             this.assignedBudget = assignedBudget;
         }
 
@@ -120,11 +123,15 @@ public class JSONOutput {
             return receivedGifts;
         }
 
-        public void setReceivedGifts(List<Gift> receivedGifts) {
+        public void setReceivedGifts(final List<Gift> receivedGifts) {
             this.receivedGifts = receivedGifts;
         }
 
-        public void addGift(Gift gift) {
+        /**
+         *
+         * @param gift
+         */
+        public void addGift(final Gift gift) {
             receivedGifts.add(gift);
         }
 
@@ -132,7 +139,7 @@ public class JSONOutput {
             return niceScoreHistory;
         }
 
-        public void setNiceScoreHistory(List<Double> niceScoreHistory) {
+        public void setNiceScoreHistory(final List<Double> niceScoreHistory) {
             this.niceScoreHistory = niceScoreHistory;
         }
     }
@@ -141,11 +148,19 @@ public class JSONOutput {
         return annualChildren;
     }
 
-    public void setAnnualChildren(ArrayList<Children> annualChildren) {
+    /**
+     *
+     * @param annualChildren
+     */
+    public void setAnnualChildren(final ArrayList<Children> annualChildren) {
         this.annualChildren = annualChildren;
     }
 
-    public void addOutputChildren(ArrayList<OutputChild> children) {
+    /**
+     *
+     * @param children
+     */
+    public void addOutputChildren(final ArrayList<OutputChild> children) {
         annualChildren.add(new Children(children));
     }
 }

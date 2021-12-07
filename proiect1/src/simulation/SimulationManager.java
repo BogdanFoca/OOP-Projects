@@ -1,5 +1,6 @@
 package simulation;
 
+import common.Constants;
 import database.Database;
 import entities.Child;
 import entities.Gift;
@@ -17,13 +18,17 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public final class SimulationManager {
-    static SimulationManager instance;
+    private static SimulationManager instance;
 
     private final Map<Child, Double> budgetByChild = new HashMap<Child, Double>();
-    JSONOutput jsonOutput;
+    private JSONOutput jsonOutput;
 
+    /**
+     *
+     * @return
+     */
     public static SimulationManager getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new SimulationManager();
         }
         return instance;
@@ -33,13 +38,17 @@ public final class SimulationManager {
         return budgetByChild;
     }
 
-    public JSONOutput startSimulation(JSONReader jsonReader) {
-        //TODO: young adults must still be printed in round0
+    /**
+     *
+     * @param jsonReader
+     * @return
+     */
+    public JSONOutput startSimulation(final JSONReader jsonReader) {
         jsonOutput = new JSONOutput();
         budgetByChild.clear();
         round0();
         for (int i = 0; i < jsonReader.getNumberOfYears(); i++) {
-            roundYear(jsonReader.getAnnualChanges().get(i), i + 1);
+            roundYear(jsonReader.getAnnualChanges().get(i));
         }
         return jsonOutput;
     }
@@ -62,14 +71,14 @@ public final class SimulationManager {
         }
         giveGifts(outputChildren);
         for (int i = outputChildren.size() - 1; i >= 0; i--) {
-            if (outputChildren.get(i).getAge() > 18) {
+            if (outputChildren.get(i).getAge() > Constants.TEEN_AGE) {
                 outputChildren.remove(i);
             }
         }
         jsonOutput.addOutputChildren(outputChildren);
     }
 
-    void roundYear(AnnualChange annualChange, int year) {
+    void roundYear(final AnnualChange annualChange) {
         ArrayList<JSONOutput.OutputChild> outputChildren = new ArrayList<JSONOutput.OutputChild>();
         updateData(annualChange);
         updateBudgets();
@@ -88,16 +97,17 @@ public final class SimulationManager {
         }
         giveGifts(outputChildren);
         for (int i = outputChildren.size() - 1; i >= 0; i--) {
-            if (outputChildren.get(i).getAge() > 18) {
+            if (outputChildren.get(i).getAge() > Constants.TEEN_AGE) {
                 outputChildren.remove(i);
             }
         }
         jsonOutput.addOutputChildren(outputChildren);
     }
 
-    Gift getAppropriateGift(double budget, Category category) {
+    Gift getAppropriateGift(final double budget, final Category category) {
         List<Gift> giftsInCategory = new ArrayList<Gift>(Database.getInstance().getGifts());
-        giftsInCategory = giftsInCategory.stream().filter(g -> g.getCategory().equals(category)).collect(Collectors.toList());
+        giftsInCategory = giftsInCategory.stream()
+                .filter(g -> g.getCategory().equals(category)).collect(Collectors.toList());
         giftsInCategory.sort(new Comparers.CompareGiftsByPrice());
         if (giftsInCategory.size() == 0 || giftsInCategory.get(0).getPrice() > budget) {
             return null;
@@ -108,20 +118,20 @@ public final class SimulationManager {
     void updateBudgets() {
         List<Child> children = Database.getInstance().getChildren();
         budgetByChild.clear();
-        double averageScore = 0;
+        Double averageScore = 0.0;
         for (Child c : children) {
             c.setChildCategory();
             c.setAverageNiceScore();
             averageScore += c.getAverageScore();
         }
-        double budgetUnit = Database.getInstance().getSantaBudget() / averageScore;
+        Double budgetUnit = Database.getInstance().getSantaBudget() / averageScore;
         for (Child c: children) {
             budgetByChild.put(c, c.getAverageScore() * budgetUnit);
             c.setAssignedBudget(c.getAverageScore() * budgetUnit);
         }
     }
 
-    void giveGifts(List<JSONOutput.OutputChild> outputChildren) {
+    void giveGifts(final List<JSONOutput.OutputChild> outputChildren) {
         List<Child> children = Database.getInstance().getChildren();
         for (int i = 0; i < children.size(); i++) {
             if (children.get(i).getAverageScore() >= 0) {
@@ -130,14 +140,15 @@ public final class SimulationManager {
                     if (gift != null) {
                         children.get(i).receiveGift(gift);
                         outputChildren.get(i).addGift(gift);
-                        budgetByChild.put(children.get(i), budgetByChild.get(children.get(i)) - gift.getPrice());
+                        budgetByChild.put(children.get(i),
+                                budgetByChild.get(children.get(i)) - gift.getPrice());
                     }
                 }
             }
         }
     }
 
-    void updateData(AnnualChange annualChange) {
+    void updateData(final AnnualChange annualChange) {
         Database.getInstance().setSantaBudget(annualChange.getNewBudget());
         List<Child> children = Database.getInstance().getChildren();
         for (int i = children.size() - 1; i >= 0; i--) {
@@ -148,19 +159,20 @@ public final class SimulationManager {
             }
         }
         for (AnnualChange.ChildUpdate cu : annualChange.getChildrenUpdates()) {
-            Child child = Database.getInstance().getChildren().stream().filter(c -> c.getId() == cu.getId()).findFirst().orElse(null);
+            Child child = Database.getInstance().getChildren().stream()
+                    .filter(c -> c.getId() == cu.getId()).findFirst().orElse(null);
             if (child != null) {
-                if(cu.getNiceScore() != null) {
+                if (cu.getNiceScore() != null) {
                     child.addNiceScore(cu.getNiceScore());
                 }
-                if(cu.getNewPreferences() != null) {
+                if (cu.getNewPreferences() != null) {
                     child.addNewPreferences(cu.getNewPreferences());
                 }
             }
         }
         for (Child c : annualChange.getNewChildren()) {
             c.setChildCategory();
-            if(c.categoryOfChild() != ChildCategory.Young_Adult) {
+            if (c.categoryOfChild() != ChildCategory.Young_Adult) {
                 children.add(c);
             }
         }

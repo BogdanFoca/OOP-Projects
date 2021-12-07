@@ -2,13 +2,12 @@ package database;
 
 import entities.Child;
 import entities.Gift;
-import enums.Cities;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Database {
-    static Database instance;
+    private static Database instance;
 
     private int numberOfYears;
     private double santaBudget;
@@ -16,6 +15,10 @@ public final class Database {
     private List<Child> children = new ArrayList<Child>();
     private List<Gift> gifts = new ArrayList<Gift>();
 
+    /**
+     *
+     * @return
+     */
     public static Database getInstance() {
         if (instance == null) {
             instance = new Database();
@@ -27,7 +30,7 @@ public final class Database {
         return numberOfYears;
     }
 
-    public void setNumberOfYears(int numberOfYears) {
+    public void setNumberOfYears(final int numberOfYears) {
         this.numberOfYears = numberOfYears;
     }
 
@@ -35,7 +38,7 @@ public final class Database {
         return santaBudget;
     }
 
-    public void setSantaBudget(double santaBudget) {
+    public void setSantaBudget(final double santaBudget) {
         this.santaBudget = santaBudget;
     }
 
@@ -43,7 +46,7 @@ public final class Database {
         return children;
     }
 
-    public void setChildren(List<Child> children) {
+    public void setChildren(final List<Child> children) {
         this.children = children;
     }
 
@@ -51,10 +54,17 @@ public final class Database {
         return gifts;
     }
 
-    public void setGifts(List<Gift> gifts) {
+    /**
+     *
+     * @param gifts
+     */
+    public void setGifts(final List<Gift> gifts) {
         this.gifts = gifts;
     }
 
+    /**
+     *
+     */
     public void clear() {
         children.clear();
         gifts.clear();
