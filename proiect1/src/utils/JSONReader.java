@@ -65,7 +65,7 @@ public final class JSONReader {
     }
 
     /**
-     *
+     * Reads file, converts data to corresponding objects, adds objects to Database
      * @param file
      * @throws IOException
      * @throws ParseException
@@ -127,7 +127,7 @@ public final class JSONReader {
     }
 
     /**
-     *
+     *Converts a JSONArray to a List of Gift Categories
      * @param array
      * @return
      */
@@ -144,7 +144,7 @@ public final class JSONReader {
     }
 
     /**
-     *
+     *Converts a JSONArray to a List of children
      * @param array
      * @return
      */
@@ -170,7 +170,7 @@ public final class JSONReader {
     }
 
     /**
-     *
+     *Converts a JSONArray to a List of gifts
      * @param array
      * @return
      */
@@ -192,7 +192,7 @@ public final class JSONReader {
     }
 
     /**
-     *
+     *Converts a JSONArray to a List of child updates
      * @param array
      * @return
      */

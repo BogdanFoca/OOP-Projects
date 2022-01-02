@@ -24,7 +24,7 @@ public final class SimulationManager {
     private JSONOutput jsonOutput;
 
     /**
-     *
+     *Singleton getter
      * @return
      */
     public static SimulationManager getInstance() {
@@ -39,7 +39,7 @@ public final class SimulationManager {
     }
 
     /**
-     *
+     *Starts the simulation. Does round0, then for each year does roundYear
      * @param jsonReader
      * @return
      */
@@ -148,6 +148,10 @@ public final class SimulationManager {
         }
     }
 
+    /**
+     * Increases children age, removes adults, adds nice scores, new preferences, adds new children and gifts
+     * @param annualChange
+     */
     void updateData(final AnnualChange annualChange) {
         Database.getInstance().setSantaBudget(annualChange.getNewBudget());
         List<Child> children = Database.getInstance().getChildren();

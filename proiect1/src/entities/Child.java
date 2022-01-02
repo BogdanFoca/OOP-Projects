@@ -77,11 +77,10 @@ public final class Child {
     }
 
     /**
-     *
+     *this has a weird name so it is not the default getter
+     *so that the JSON parser does not write it
      * @return
      */
-    //this has a weird name so
-    // it is not the default getter so that the JSON parser does not write it
     public ChildCategory categoryOfChild() {
         return childCategory;
     }
@@ -142,7 +141,7 @@ public final class Child {
     }
 
     /**
-     *
+     *Sets score based on child category
      */
     public void setAverageNiceScore() {
         switch (childCategory) {
@@ -174,7 +173,7 @@ public final class Child {
     }
 
     /**
-     *
+     *Adds gift
      * @param gift
      */
     public void receiveGift(final Gift gift) {
@@ -182,7 +181,7 @@ public final class Child {
     }
 
     /**
-     *
+     *Increments age
      */
     public void incrementAge() {
         age++;
@@ -190,7 +189,7 @@ public final class Child {
     }
 
     /**
-     *
+     *Adds a nice score
      * @param niceScore
      */
     public void addNiceScore(final Double niceScore) {
@@ -199,7 +198,7 @@ public final class Child {
     }
 
     /**
-     *
+     *Adds new preference
      * @param categories
      */
     public void addNewPreferences(final List<Category> categories) {

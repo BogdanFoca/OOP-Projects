@@ -41,7 +41,7 @@ public enum Cities {
     }
 
     /**
-     *
+     *Converts string to Enum element
      * @param label
      * @return
      */

@@ -16,7 +16,7 @@ public final class Database {
     private List<Gift> gifts = new ArrayList<Gift>();
 
     /**
-     *
+     *Singleton getter
      * @return
      */
     public static Database getInstance() {
@@ -63,7 +63,7 @@ public final class Database {
     }
 
     /**
-     *
+     *Clears Database
      */
     public void clear() {
         children.clear();

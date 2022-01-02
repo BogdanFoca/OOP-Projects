@@ -29,7 +29,7 @@ public enum Category {
     }
 
     /**
-     *
+     *Converts string to Enum element
      * @param label
      * @return
      */

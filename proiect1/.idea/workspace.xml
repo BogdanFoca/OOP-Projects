@@ -2,7 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8073ff5-5246-4b54-8002-f4461116b67a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../README" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Child.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Child.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enums/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enums/Cities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/enums/Cities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/simulation/SimulationManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/simulation/SimulationManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/JSONReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/JSONReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/checker/Checker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/checker/Checkstyle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/checker/checkstyle-8.36.2-all.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/checker/checkstyle.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/checker/poo_checks.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/common/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/database/Database.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/entities/Child.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/entities/Gift.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/enums/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/enums/ChildCategory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/enums/Cities.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/simulation/SimulationManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/utils/AnnualChange.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/utils/Comparers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/utils/JSONOutput.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/utils/JSONReader.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +45,31 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1639069687" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="oop-pub-master" />
+                    <option name="lastUsedInstant" value="1639069686" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$/.." />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
   <component name="ProjectId" id="21x8cFpGkGDfaUv8gA8qGB0uKGN" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,6 +78,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
