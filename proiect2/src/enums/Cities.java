@@ -16,27 +16,41 @@ public enum Cities {
     @JsonProperty("Timisoara")
     TIMISOARA("Timisoara"),
 
-    @JsonProperty("Cluj-Napoca")
-    CLUJ("Cluj-Napoca"),
-
     @JsonProperty("Iasi")
     IASI("Iasi"),
+
+    @JsonProperty("Oradea")
+    ORADEA("Oradea"),
 
     @JsonProperty("Craiova")
     CRAIOVA("Craiova"),
 
-    @JsonProperty("Brasov")
-    BRASOV("Brasov"),
+    @JsonProperty("Cluj-Napoca")
+    CLUJ_NAPOCA("Cluj-Napoca"),
 
     @JsonProperty("Braila")
     BRAILA("Braila"),
 
-    @JsonProperty("Oradea")
-    ORADEA("Oradea");
+    @JsonProperty("Brasov")
+    BRASOV("Brasov");
 
-    private String value;
+    public final String value;
 
     Cities(final String value) {
         this.value = value;
+    }
+
+    /**
+     *Converts string to Enum element
+     * @param label
+     * @return
+     */
+    public static Cities valueOfCityLabel(final String label) {
+        for (Cities c : values()) {
+            if (c.value.equals(label)) {
+                return c;
+            }
+        }
+        return null;
     }
 }
