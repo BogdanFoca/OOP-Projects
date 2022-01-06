@@ -7,6 +7,7 @@ import entities.Gift;
 import enums.Category;
 import enums.ChildCategory;
 import enums.Elfs;
+import enums.Strategies;
 import utils.AnnualChange;
 import utils.Comparers;
 import utils.JSONOutput;
@@ -70,6 +71,9 @@ public final class SimulationManager {
                     budgetByChild.get(c)
             ));
         }
+        GiftStrategy strategy = StrategyFactory.createGiftStrategy(Strategies.ID);
+        assert strategy != null;
+        strategy.applyStrategy(outputChildren);
         giveGifts(outputChildren);
         for (int i = outputChildren.size() - 1; i >= 0; i--) {
             if (outputChildren.get(i).getAge() > Constants.TEEN_AGE) {
@@ -96,6 +100,9 @@ public final class SimulationManager {
                     budgetByChild.get(c)
             ));
         }
+        GiftStrategy strategy = StrategyFactory.createGiftStrategy(annualChange.getStrategy());
+        assert strategy != null;
+        strategy.applyStrategy(outputChildren);
         giveGifts(outputChildren);
         for (int i = outputChildren.size() - 1; i >= 0; i--) {
             if (outputChildren.get(i).getAge() > Constants.TEEN_AGE) {
@@ -110,14 +117,14 @@ public final class SimulationManager {
         giftsInCategory = giftsInCategory.stream()
                 .filter(g -> g.getCategory().equals(category)).collect(Collectors.toList());
         giftsInCategory.sort(new Comparers.CompareGiftsByPrice());
-        Gift selectedGift = giftsInCategory.get(0);
-        for (int i = 0; i< giftsInCategory.size(); i++) {
-            if (giftsInCategory.get(i).getQuantity() > 0) {
-                selectedGift = giftsInCategory.get(i);
+        Gift selectedGift = null;
+        for (Gift gift : giftsInCategory) {
+            if (gift.getQuantity() > 0) {
+                selectedGift = gift;
                 break;
             }
         }
-        if (giftsInCategory.size() == 0 || selectedGift.getPrice() > budget || selectedGift.getQuantity() == 0) {
+        if (selectedGift == null || selectedGift.getPrice() > budget) {
             return null;
         }
         return selectedGift;
