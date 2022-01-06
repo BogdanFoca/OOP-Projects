@@ -26,6 +26,8 @@ public final class Constants {
     public static final String CITY = "city";
     public static final String NICE_SCORE = "niceScore";
     public static final String GIFT_PREFERENCES = "giftsPreferences";
+    public static final String NICE_SCORE_BONUS = "niceScoreBonus";
+    public static final String ELF = "elf";
     public static final String SANTA_GIFTS_LIST = "santaGiftsList";
     public static final String PRODUCT_NAME = "productName";
     public static final String PRICE = "price";
@@ -35,6 +37,8 @@ public final class Constants {
     public static final String NEW_GIFTS = "newGifts";
     public static final String NEW_CHILDREN = "newChildren";
     public static final String CHILDREN_UPDATES = "childrenUpdates";
+    public static final String QUANTITY = "quantity";
+    public static final String STRATEGY = "strategy";
 
     public static final int BABY_AGE = 5;
     public static final int KID_AGE = 12;

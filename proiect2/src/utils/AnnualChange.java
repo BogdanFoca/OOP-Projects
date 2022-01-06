@@ -3,6 +3,7 @@ package utils;
 import entities.Child;
 import entities.Gift;
 import enums.Category;
+import enums.Strategies;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +13,16 @@ public final class AnnualChange {
     private List<Gift> newGifts = new ArrayList<Gift>();
     private List<Child> newChildren = new ArrayList<Child>();
     private List<ChildUpdate> childrenUpdates = new ArrayList<ChildUpdate>();
+    private Strategies strategy;
 
     public AnnualChange(final double newBudget, final List<Gift> newGifts,
-                        final List<Child> newChildren, final List<ChildUpdate> childrenUpdates) {
+                        final List<Child> newChildren, final List<ChildUpdate> childrenUpdates,
+                        final Strategies strategy) {
         this.newBudget = newBudget;
         this.newGifts = newGifts;
         this.newChildren = newChildren;
         this.childrenUpdates = childrenUpdates;
+        this.strategy = strategy;
     }
 
     public AnnualChange() {
@@ -39,6 +43,10 @@ public final class AnnualChange {
 
     public List<ChildUpdate> getChildrenUpdates() {
         return childrenUpdates;
+    }
+
+    public Strategies getStrategy() {
+        return strategy;
     }
 
     public final class ChildUpdate {

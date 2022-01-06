@@ -6,6 +6,8 @@ import entities.Child;
 import entities.Gift;
 import enums.Category;
 import enums.Cities;
+import enums.Elfs;
+import enums.Strategies;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -20,8 +22,8 @@ import java.util.List;
 public final class JSONReader {
     private int numberOfYears;
     private double santaBudget;
-    private List<Child> initialChildList = new ArrayList<Child>();
-    private List<Gift> initialGiftList = new ArrayList<Gift>();
+    private final List<Child> initialChildList = new ArrayList<Child>();
+    private final List<Gift> initialGiftList = new ArrayList<Gift>();
     private List<AnnualChange> annualChanges = new ArrayList<AnnualChange>();
 
     public int getNumberOfYears() {
@@ -44,16 +46,8 @@ public final class JSONReader {
         return initialChildList;
     }
 
-    public void setInitialChildList(final List<Child> initialChildList) {
-        this.initialChildList = initialChildList;
-    }
-
     public List<Gift> getInitialGiftList() {
         return initialGiftList;
-    }
-
-    public void setInitialGiftList(final List<Gift> initialGiftList) {
-        this.initialGiftList = initialGiftList;
     }
 
     public List<AnnualChange> getAnnualChanges() {
@@ -79,7 +73,7 @@ public final class JSONReader {
                 .get(Constants.INITIAL_DATA)).get(Constants.CHILDREN);
         JSONArray jsonInitialGiftList = (JSONArray) ((JSONObject) jsonObject
                 .get(Constants.INITIAL_DATA)).get(Constants.SANTA_GIFTS_LIST);
-        JSONArray jsonAnnualChanges = (JSONArray) ((JSONObject) jsonObject)
+        JSONArray jsonAnnualChanges = (JSONArray) jsonObject
                 .get(Constants.ANNUAL_CHANGES);
 
         if (jsonInitialChildList != null) {
@@ -92,7 +86,9 @@ public final class JSONReader {
                         Cities.valueOfCityLabel((String) ((JSONObject) jo).get(Constants.CITY)),
                         ((Number) ((JSONObject) jo).get(Constants.NICE_SCORE)).doubleValue(),
                         convertJSONArrayToGiftCategories(
-                                (JSONArray) ((JSONObject) jo).get(Constants.GIFT_PREFERENCES))
+                                (JSONArray) ((JSONObject) jo).get(Constants.GIFT_PREFERENCES)),
+                        (int) (long) ((JSONObject) jo).get(Constants.NICE_SCORE_BONUS),
+                        Elfs.valueOfElfLabel((String) ((JSONObject) jo).get(Constants.ELF))
                         ));
             }
         }
@@ -102,7 +98,8 @@ public final class JSONReader {
                         (String) ((JSONObject) jo).get(Constants.PRODUCT_NAME),
                         (double) (long) ((JSONObject) jo).get(Constants.PRICE),
                         Category.valueOfCategoryLabel(
-                                (String) ((JSONObject) jo).get(Constants.CATEGORY))
+                                (String) ((JSONObject) jo).get(Constants.CATEGORY)),
+                        (int) (long) ((JSONObject) jo).get(Constants.QUANTITY)
                         ));
             }
         }
@@ -115,7 +112,8 @@ public final class JSONReader {
                         convertJSONArrayToChildren(
                                 (JSONArray) ((JSONObject) o).get(Constants.NEW_CHILDREN)),
                         convertJSONArrayToChildUpdates(
-                                (JSONArray) ((JSONObject) o).get(Constants.CHILDREN_UPDATES))
+                                (JSONArray) ((JSONObject) o).get(Constants.CHILDREN_UPDATES)),
+                        Strategies.valueOfStrategyLabel((String) ((JSONObject) o).get(Constants.STRATEGY))
                         ));
             }
         }
@@ -160,7 +158,9 @@ public final class JSONReader {
                         Cities.valueOfCityLabel((String) ((JSONObject) jo).get(Constants.CITY)),
                         ((Number) ((JSONObject) jo).get(Constants.NICE_SCORE)).doubleValue(),
                         convertJSONArrayToGiftCategories(
-                                (JSONArray) ((JSONObject) jo).get(Constants.GIFT_PREFERENCES))
+                                (JSONArray) ((JSONObject) jo).get(Constants.GIFT_PREFERENCES)),
+                        (int) (long) ((JSONObject) jo).get(Constants.NICE_SCORE_BONUS),
+                        Elfs.valueOfElfLabel((String) ((JSONObject) jo).get(Constants.ELF))
                 ));
             }
             return finalArray;
@@ -182,7 +182,8 @@ public final class JSONReader {
                         (String) ((JSONObject) jo).get(Constants.PRODUCT_NAME),
                         (double) (long) ((JSONObject) jo).get(Constants.PRICE),
                         Category.valueOfCategoryLabel(
-                                (String) ((JSONObject) jo).get(Constants.CATEGORY))
+                                (String) ((JSONObject) jo).get(Constants.CATEGORY)),
+                        (int) (long) ((JSONObject) jo).get(Constants.QUANTITY)
                 ));
             }
             return finalArray;

@@ -6,6 +6,7 @@ import entities.Child;
 import entities.Gift;
 import enums.Category;
 import enums.ChildCategory;
+import enums.Elfs;
 import utils.AnnualChange;
 import utils.Comparers;
 import utils.JSONOutput;
@@ -109,10 +110,17 @@ public final class SimulationManager {
         giftsInCategory = giftsInCategory.stream()
                 .filter(g -> g.getCategory().equals(category)).collect(Collectors.toList());
         giftsInCategory.sort(new Comparers.CompareGiftsByPrice());
-        if (giftsInCategory.size() == 0 || giftsInCategory.get(0).getPrice() > budget) {
+        Gift selectedGift = giftsInCategory.get(0);
+        for (int i = 0; i< giftsInCategory.size(); i++) {
+            if (giftsInCategory.get(i).getQuantity() > 0) {
+                selectedGift = giftsInCategory.get(i);
+                break;
+            }
+        }
+        if (giftsInCategory.size() == 0 || selectedGift.getPrice() > budget || selectedGift.getQuantity() == 0) {
             return null;
         }
-        return giftsInCategory.get(0);
+        return selectedGift;
     }
 
     void updateBudgets() {
@@ -126,8 +134,15 @@ public final class SimulationManager {
         }
         Double budgetUnit = Database.getInstance().getSantaBudget() / averageScore;
         for (Child c: children) {
-            budgetByChild.put(c, c.getAverageScore() * budgetUnit);
-            c.setAssignedBudget(c.getAverageScore() * budgetUnit);
+            Double childBudget = c.getAverageScore() * budgetUnit;
+            if (c.getElf() == Elfs.BLACK) {
+                childBudget = childBudget - childBudget * 30 / 100;
+            }
+            else if (c.getElf() == Elfs.PINK) {
+                childBudget = childBudget + childBudget * 30 / 100;
+            }
+            budgetByChild.put(c, childBudget);
+            c.setAssignedBudget(childBudget);
         }
     }
 
@@ -139,6 +154,7 @@ public final class SimulationManager {
                     Gift gift = getAppropriateGift(budgetByChild.get(children.get(i)), cat);
                     if (gift != null) {
                         children.get(i).receiveGift(gift);
+                        gift.reduceQuantity();
                         outputChildren.get(i).addGift(gift);
                         budgetByChild.put(children.get(i),
                                 budgetByChild.get(children.get(i)) - gift.getPrice());

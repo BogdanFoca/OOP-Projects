@@ -4,6 +4,7 @@ import common.Constants;
 import enums.Category;
 import enums.ChildCategory;
 import enums.Cities;
+import enums.Elfs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,8 @@ public final class Child {
     private final Cities city;
     private int age;
     private List<Category> giftsPreferences = new ArrayList<Category>();
+    private int niceScoreBonus;
+    private Elfs elf;
     private Double averageScore;
     private List<Double> niceScoreHistory = new ArrayList<Double>();
     private Double assignedBudget;
@@ -24,7 +27,8 @@ public final class Child {
 
     public Child(
             final int id, final String lastName, final String firstName, final int age,
-            final Cities city, final Double niceScore, final List<Category> giftPreference) {
+            final Cities city, final Double niceScore, final List<Category> giftPreference,
+            final int niceScoreBonus, final Elfs elf) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -32,6 +36,8 @@ public final class Child {
         this.city = city;
         niceScoreHistory.add(niceScore);
         addNewPreferences(giftPreference);
+        this.niceScoreBonus = niceScoreBonus;
+        this.elf = elf;
     }
 
     public Child(final Child c) {
@@ -46,6 +52,8 @@ public final class Child {
         this.receivedGifts = new ArrayList<Gift>(c.receivedGifts);
         setChildCategory();
         setAverageNiceScore();
+        this.niceScoreBonus = c.niceScoreBonus;
+        this.elf = c.elf;
     }
 
     public int getId() {
@@ -93,8 +101,20 @@ public final class Child {
         this.giftsPreferences = giftsPreferences;
     }
 
-    public void setAverageScore(final double averageScore) {
-        this.averageScore = averageScore;
+    public int getNiceScoreBonus() {
+        return niceScoreBonus;
+    }
+
+    public void setNiceScoreBonus(int niceScoreBonus) {
+        this.niceScoreBonus = niceScoreBonus;
+    }
+
+    public Elfs getElf() {
+        return elf;
+    }
+
+    public void setElf(Elfs elf) {
+        this.elf = elf;
     }
 
     public void setNiceScoreHistory(final List<Double> niceScoreHistory) {
@@ -146,7 +166,7 @@ public final class Child {
     public void setAverageNiceScore() {
         switch (childCategory) {
             case Baby:
-                averageScore = Constants.BABY_SCORE;
+                averageScore = Constants.BABY_SCORE + niceScoreBonus;
                 break;
             case Kid:
                 Double sum = 0.0;
@@ -154,7 +174,7 @@ public final class Child {
                     sum += d;
                 }
                 sum /= niceScoreHistory.size();
-                averageScore = sum;
+                averageScore = sum + niceScoreBonus;
                 break;
             case Teen:
                 Double sump = 0.0;
@@ -162,7 +182,7 @@ public final class Child {
                     sump += niceScoreHistory.get(i) * (i + 1);
                 }
                 sump /= (double) niceScoreHistory.size() * (niceScoreHistory.size() + 1) / 2;
-                averageScore = sump;
+                averageScore = sump + niceScoreBonus;
                 break;
             case Young_Adult:
                 averageScore = 0.0;
