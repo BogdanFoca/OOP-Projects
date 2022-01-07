@@ -127,9 +127,9 @@ public final class SimulationManager {
         for (Child c: children) {
             Double childBudget = c.getAverageScore() * budgetUnit;
             if (c.getElf() == Elfs.BLACK) {
-                childBudget = childBudget - childBudget * Constants.ELF_PERCENTAGE;
+                childBudget = childBudget - childBudget * Constants.ELF_PERCENTAGE / 100;
             } else if (c.getElf() == Elfs.PINK) {
-                childBudget = childBudget + childBudget * Constants.ELF_PERCENTAGE;
+                childBudget = childBudget + childBudget * Constants.ELF_PERCENTAGE / 100;
             }
             budgetByChild.put(c, childBudget);
             c.setAssignedBudget(childBudget);

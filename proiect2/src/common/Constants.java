@@ -44,7 +44,7 @@ public final class Constants {
     public static final int KID_AGE = 12;
     public static final int TEEN_AGE = 18;
     public static final Double BABY_SCORE = 10.0;
-    public static final Double ELF_PERCENTAGE = 0.3;
+    public static final Double ELF_PERCENTAGE = 30.0;
 
     private Constants() {
         //constructor for checkstyle

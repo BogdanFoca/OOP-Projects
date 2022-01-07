@@ -9,7 +9,7 @@
       "giftsPreferences" : [ "Toys", "Books", "Sweets" ],
       "averageScore" : 10.0,
       "niceScoreHistory" : [ 2.0 ],
-      "assignedBudget" : 50.0,
+      "assignedBudget" : 65.0,
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
@@ -32,7 +32,7 @@
       "giftsPreferences" : [ "Toys", "Clothes", "Board Games" ],
       "averageScore" : 10.0,
       "niceScoreHistory" : [ 3.0 ],
-      "assignedBudget" : 50.0,
+      "assignedBudget" : 65.0,
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
@@ -53,8 +53,12 @@
       "giftsPreferences" : [ "Toys", "Books", "Sweets" ],
       "averageScore" : 1.0,
       "niceScoreHistory" : [ 2.0, 0.0 ],
-      "assignedBudget" : 4.444444444444445,
-      "receivedGifts" : [ ]
+      "assignedBudget" : 5.777777777777779,
+      "receivedGifts" : [ {
+        "productName" : "Teddy Bear",
+        "price" : 5.0,
+        "category" : "Toys"
+      } ]
     }, {
       "id" : 1,
       "lastName" : "Mihalache",
@@ -64,7 +68,7 @@
       "giftsPreferences" : [ "Toys", "Clothes", "Board Games" ],
       "averageScore" : 5.5,
       "niceScoreHistory" : [ 3.0, 8.0 ],
-      "assignedBudget" : 24.444444444444446,
+      "assignedBudget" : 31.77777777777778,
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
@@ -79,11 +83,15 @@
       "giftsPreferences" : [ "Books", "Sweets", "Clothes" ],
       "averageScore" : 10.0,
       "niceScoreHistory" : [ 10.0 ],
-      "assignedBudget" : 44.44444444444444,
+      "assignedBudget" : 57.77777777777777,
       "receivedGifts" : [ {
         "productName" : "Gummy Bears",
         "price" : 10.0,
         "category" : "Sweets"
+      }, {
+        "productName" : "Dress",
+        "price" : 45.0,
+        "category" : "Clothes"
       } ]
     }, {
       "id" : 3,
@@ -94,7 +102,7 @@
       "giftsPreferences" : [ "Toys", "Sweets" ],
       "averageScore" : 6.0,
       "niceScoreHistory" : [ 6.0 ],
-      "assignedBudget" : 26.666666666666668,
+      "assignedBudget" : 34.66666666666667,
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
@@ -115,7 +123,7 @@
       "giftsPreferences" : [ "Toys", "Books", "Sweets" ],
       "averageScore" : 3.3333333333333335,
       "niceScoreHistory" : [ 2.0, 0.0, 8.0 ],
-      "assignedBudget" : 16.393442622950822,
+      "assignedBudget" : 21.311475409836067,
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
@@ -130,11 +138,15 @@
       "giftsPreferences" : [ "Toys", "Clothes", "Board Games" ],
       "averageScore" : 5.666666666666667,
       "niceScoreHistory" : [ 3.0, 8.0, 6.0 ],
-      "assignedBudget" : 27.868852459016395,
+      "assignedBudget" : 36.22950819672131,
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
         "category" : "Toys"
+      }, {
+        "productName" : "Monopoly",
+        "price" : 30.0,
+        "category" : "Board Games"
       } ]
     }, {
       "id" : 2,
@@ -145,7 +157,7 @@
       "giftsPreferences" : [ "Books", "Sweets", "Clothes" ],
       "averageScore" : 5.333333333333333,
       "niceScoreHistory" : [ 10.0, 3.0 ],
-      "assignedBudget" : 26.229508196721312,
+      "assignedBudget" : 34.09836065573771,
       "receivedGifts" : [ {
         "productName" : "Bag of Candy",
         "price" : 20.0,
@@ -160,7 +172,7 @@
       "giftsPreferences" : [ "Sweets", "Toys" ],
       "averageScore" : 6.0,
       "niceScoreHistory" : [ 6.0 ],
-      "assignedBudget" : 29.508196721311478,
+      "assignedBudget" : 38.36065573770492,
       "receivedGifts" : [ {
         "productName" : "Bag of Candy",
         "price" : 20.0,
@@ -181,7 +193,7 @@
       "giftsPreferences" : [ "Clothes", "Board Games", "Toys", "Books", "Sweets" ],
       "averageScore" : 3.3333333333333335,
       "niceScoreHistory" : [ 2.0, 0.0, 8.0 ],
-      "assignedBudget" : 15.503875968992249,
+      "assignedBudget" : 20.155038759689923,
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
@@ -196,10 +208,10 @@
       "giftsPreferences" : [ "Toys", "Clothes", "Board Games" ],
       "averageScore" : 5.0,
       "niceScoreHistory" : [ 3.0, 8.0, 6.0, 3.0 ],
-      "assignedBudget" : 23.255813953488374,
+      "assignedBudget" : 30.232558139534888,
       "receivedGifts" : [ {
-        "productName" : "Teddy Bear",
-        "price" : 5.0,
+        "productName" : "Castle",
+        "price" : 15.0,
         "category" : "Toys"
       } ]
     }, {
@@ -211,7 +223,7 @@
       "giftsPreferences" : [ "Books", "Sweets", "Clothes" ],
       "averageScore" : 5.166666666666667,
       "niceScoreHistory" : [ 10.0, 3.0, 5.0 ],
-      "assignedBudget" : 24.031007751937988,
+      "assignedBudget" : 31.240310077519386,
       "receivedGifts" : [ {
         "productName" : "Bag of Candy",
         "price" : 20.0,
@@ -226,7 +238,7 @@
       "giftsPreferences" : [ "Sweets", "Toys" ],
       "averageScore" : 8.0,
       "niceScoreHistory" : [ 6.0, 10.0 ],
-      "assignedBudget" : 37.2093023255814,
+      "assignedBudget" : 48.372093023255815,
       "receivedGifts" : [ {
         "productName" : "Bag of Candy",
         "price" : 20.0,
@@ -247,8 +259,12 @@
       "giftsPreferences" : [ "Toys", "Clothes", "Board Games", "Books", "Sweets" ],
       "averageScore" : 3.0,
       "niceScoreHistory" : [ 2.0, 0.0, 8.0, 2.0 ],
-      "assignedBudget" : 12.658227848101266,
-      "receivedGifts" : [ ]
+      "assignedBudget" : 16.455696202531644,
+      "receivedGifts" : [ {
+        "productName" : "Castle",
+        "price" : 15.0,
+        "category" : "Toys"
+      } ]
     }, {
       "id" : 1,
       "lastName" : "Mihalache",
@@ -258,7 +274,7 @@
       "giftsPreferences" : [ "Toys", "Clothes", "Board Games" ],
       "averageScore" : 6.0,
       "niceScoreHistory" : [ 3.0, 8.0, 6.0, 3.0, 10.0 ],
-      "assignedBudget" : 25.31645569620253,
+      "assignedBudget" : 32.91139240506329,
       "receivedGifts" : [ {
         "productName" : "Castle",
         "price" : 15.0,
@@ -273,7 +289,7 @@
       "giftsPreferences" : [ "Books", "Sweets", "Clothes" ],
       "averageScore" : 6.7,
       "niceScoreHistory" : [ 10.0, 3.0, 5.0, 9.0 ],
-      "assignedBudget" : 28.270042194092827,
+      "assignedBudget" : 36.75105485232068,
       "receivedGifts" : [ {
         "productName" : "Bag of Candy",
         "price" : 20.0,
@@ -288,7 +304,7 @@
       "giftsPreferences" : [ "Sweets", "Toys" ],
       "averageScore" : 8.0,
       "niceScoreHistory" : [ 6.0, 10.0, 8.0 ],
-      "assignedBudget" : 33.755274261603375,
+      "assignedBudget" : 43.881856540084385,
       "receivedGifts" : [ {
         "productName" : "Milk and Cookies",
         "price" : 30.0,

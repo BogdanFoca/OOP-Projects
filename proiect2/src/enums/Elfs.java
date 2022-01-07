@@ -3,17 +3,17 @@ package enums;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum Elfs {
-    @JsonProperty("Yellow")
-    YELLOW("Yellow"),
+    @JsonProperty("yellow")
+    YELLOW("yellow"),
 
-    @JsonProperty("Black")
-    BLACK("Black"),
+    @JsonProperty("black")
+    BLACK("black"),
 
-    @JsonProperty("Pink")
-    PINK("Pink"),
+    @JsonProperty("pink")
+    PINK("pink"),
 
-    @JsonProperty("White")
-    WHITE("White");
+    @JsonProperty("white")
+    WHITE("white");
 
     private final String value;
 

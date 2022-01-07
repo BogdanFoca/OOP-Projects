@@ -167,6 +167,7 @@ public final class Child {
         switch (childCategory) {
             case Baby:
                 averageScore = Constants.BABY_SCORE + niceScoreBonus;
+                averageScore = averageScore > 10 ? 10 : averageScore;
                 break;
             case Kid:
                 Double sum = 0.0;
@@ -175,6 +176,7 @@ public final class Child {
                 }
                 sum /= niceScoreHistory.size();
                 averageScore = sum + niceScoreBonus;
+                averageScore = averageScore > 10 ? 10 : averageScore;
                 break;
             case Teen:
                 Double sump = 0.0;
@@ -183,6 +185,7 @@ public final class Child {
                 }
                 sump /= (double) niceScoreHistory.size() * (niceScoreHistory.size() + 1) / 2;
                 averageScore = sump + niceScoreBonus;
+                averageScore = averageScore > 10 ? 10 : averageScore;
                 break;
             case Young_Adult:
                 averageScore = 0.0;
