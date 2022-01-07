@@ -127,9 +127,11 @@ public final class SimulationManager {
         for (Child c: children) {
             Double childBudget = c.getAverageScore() * budgetUnit;
             if (c.getElf() == Elfs.BLACK) {
-                childBudget = childBudget - childBudget * Constants.ELF_PERCENTAGE / 100;
+                childBudget = childBudget - childBudget
+                        * Constants.ELF_PERCENTAGE / Constants.ONE_HUNDRED;
             } else if (c.getElf() == Elfs.PINK) {
-                childBudget = childBudget + childBudget * Constants.ELF_PERCENTAGE / 100;
+                childBudget = childBudget + childBudget
+                        * Constants.ELF_PERCENTAGE / Constants.ONE_HUNDRED;
             }
             budgetByChild.put(c, childBudget);
             c.setAssignedBudget(childBudget);
@@ -180,7 +182,8 @@ public final class SimulationManager {
                 Gift selectedGift = null;
                 if (c.getGiftsPreferences().size() > 0) {
                     Category cat = c.getGiftsPreferences().get(0);
-                    List<Gift> giftsInCategory = new ArrayList<Gift>(Database.getInstance().getGifts());
+                    List<Gift> giftsInCategory = new ArrayList<Gift>(
+                            Database.getInstance().getGifts());
                     giftsInCategory = giftsInCategory.stream()
                             .filter(g -> g.getCategory().equals(cat)).collect(Collectors.toList());
                     giftsInCategory.sort(new Comparers.CompareGiftsByPrice());

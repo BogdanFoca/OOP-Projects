@@ -25,19 +25,16 @@ public final class Child {
 
     private ChildCategory childCategory;
 
-    public Child(
-            final int id, final String lastName, final String firstName, final int age,
-            final Cities city, final Double niceScore, final List<Category> giftPreference,
-            final int niceScoreBonus, final Elfs elf) {
-        this.id = id;
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.age = age;
-        this.city = city;
-        niceScoreHistory.add(niceScore);
-        addNewPreferences(giftPreference);
-        this.niceScoreBonus = niceScoreBonus;
-        this.elf = elf;
+    public Child(final Builder builder) {
+        this.id = builder.id;
+        this.lastName = builder.lastName;
+        this.firstName = builder.firstName;
+        this.age = builder.age;
+        this.city = builder.city;
+        niceScoreHistory.add(builder.niceScore);
+        addNewPreferences(builder.giftsPreference);
+        this.niceScoreBonus = builder.niceScoreBonus;
+        this.elf = builder.elf;
     }
 
     public Child(final Child c) {
@@ -54,6 +51,49 @@ public final class Child {
         setAverageNiceScore();
         this.niceScoreBonus = c.niceScoreBonus;
         this.elf = c.elf;
+    }
+
+    public static final class Builder {
+        private final int id;
+        private final String lastName;
+        private final String firstName;
+        private final Cities city;
+        private final int age;
+        private List<Category> giftsPreference = new ArrayList<Category>();
+        private int niceScoreBonus = 0;
+        private final Elfs elf;
+        private final Double niceScore;
+
+        public Builder(final int id, final String lastName, final String firstName, final int age,
+                       final Cities city, final Double niceScore,
+                       final List<Category> giftPreference, final Elfs elf) {
+            this.id = id;
+            this.lastName = lastName;
+            this.firstName = firstName;
+            this.age = age;
+            this.city = city;
+            this.niceScore = niceScore;
+            this.giftsPreference = giftPreference;
+            this.elf = elf;
+        }
+
+        /**
+         *
+         * @param niceScoreBonus
+         * @return
+         */
+        public Builder niceScoreBonus(final int bonus) {
+            this.niceScoreBonus = bonus;
+            return this;
+        }
+
+        /**
+         *
+         * @return
+         */
+        public Child build() {
+            return new Child(this);
+        }
     }
 
     public int getId() {
@@ -167,7 +207,8 @@ public final class Child {
         switch (childCategory) {
             case Baby:
                 averageScore = Constants.BABY_SCORE + niceScoreBonus;
-                averageScore = averageScore > 10 ? 10 : averageScore;
+                averageScore = averageScore > Constants.MAX_SCORE
+                        ? Constants.MAX_SCORE : averageScore;
                 break;
             case Kid:
                 Double sum = 0.0;
@@ -176,7 +217,8 @@ public final class Child {
                 }
                 sum /= niceScoreHistory.size();
                 averageScore = sum + niceScoreBonus;
-                averageScore = averageScore > 10 ? 10 : averageScore;
+                averageScore = averageScore > Constants.MAX_SCORE
+                        ? Constants.MAX_SCORE : averageScore;
                 break;
             case Teen:
                 Double sump = 0.0;
@@ -185,7 +227,8 @@ public final class Child {
                 }
                 sump /= (double) niceScoreHistory.size() * (niceScoreHistory.size() + 1) / 2;
                 averageScore = sump + niceScoreBonus;
-                averageScore = averageScore > 10 ? 10 : averageScore;
+                averageScore = averageScore > Constants.MAX_SCORE
+                        ? Constants.MAX_SCORE : averageScore;
                 break;
             case Young_Adult:
                 averageScore = 0.0;

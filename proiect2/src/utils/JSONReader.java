@@ -79,7 +79,7 @@ public final class JSONReader {
 
         if (jsonInitialChildList != null) {
             for (Object jo : jsonInitialChildList) {
-                initialChildList.add(new Child(
+                initialChildList.add(new Child.Builder(
                         (int) (long) ((JSONObject) jo).get(Constants.ID),
                         (String) ((JSONObject) jo).get(Constants.LAST_NAME),
                         (String) ((JSONObject) jo).get(Constants.FIRST_NAME),
@@ -88,9 +88,10 @@ public final class JSONReader {
                         ((Number) ((JSONObject) jo).get(Constants.NICE_SCORE)).doubleValue(),
                         convertJSONArrayToGiftCategories(
                                 (JSONArray) ((JSONObject) jo).get(Constants.GIFT_PREFERENCES)),
-                        (int) (long) ((JSONObject) jo).get(Constants.NICE_SCORE_BONUS),
-                        Elfs.valueOfElfLabel((String) ((JSONObject) jo).get(Constants.ELF))
-                        ));
+                        Elfs.valueOfElfLabel((String) ((JSONObject) jo).get(Constants.ELF)))
+                        .niceScoreBonus((int) (long) ((JSONObject) jo)
+                                .get(Constants.NICE_SCORE_BONUS))
+                        .build());
             }
         }
         if (jsonInitialGiftList != null) {
@@ -115,7 +116,8 @@ public final class JSONReader {
                                 (JSONArray) ((JSONObject) o).get(Constants.NEW_CHILDREN)),
                         convertJSONArrayToChildUpdates(
                                 (JSONArray) ((JSONObject) o).get(Constants.CHILDREN_UPDATES)),
-                        Strategies.valueOfStrategyLabel((String) ((JSONObject) o).get(Constants.STRATEGY))
+                        Strategies.valueOfStrategyLabel((String) ((JSONObject) o)
+                                .get(Constants.STRATEGY))
                         ));
             }
         }
@@ -152,7 +154,7 @@ public final class JSONReader {
         if (array != null) {
             ArrayList<Child> finalArray = new ArrayList<Child>();
             for (Object jo : array) {
-                finalArray.add(new Child(
+                finalArray.add(new Child.Builder(
                         (int) (long) ((JSONObject) jo).get(Constants.ID),
                         (String) ((JSONObject) jo).get(Constants.LAST_NAME),
                         (String) ((JSONObject) jo).get(Constants.FIRST_NAME),
@@ -161,9 +163,10 @@ public final class JSONReader {
                         ((Number) ((JSONObject) jo).get(Constants.NICE_SCORE)).doubleValue(),
                         convertJSONArrayToGiftCategories(
                                 (JSONArray) ((JSONObject) jo).get(Constants.GIFT_PREFERENCES)),
-                        (int) (long) ((JSONObject) jo).get(Constants.NICE_SCORE_BONUS),
-                        Elfs.valueOfElfLabel((String) ((JSONObject) jo).get(Constants.ELF))
-                ));
+                        Elfs.valueOfElfLabel((String) ((JSONObject) jo).get(Constants.ELF)))
+                        .niceScoreBonus((int) (long) ((JSONObject) jo)
+                                .get(Constants.NICE_SCORE_BONUS))
+                        .build());
             }
             return finalArray;
         } else {

@@ -225,8 +225,8 @@
       "niceScoreHistory" : [ 10.0, 3.0, 5.0 ],
       "assignedBudget" : 31.240310077519386,
       "receivedGifts" : [ {
-        "productName" : "Bag of Candy",
-        "price" : 20.0,
+        "productName" : "Milk and Cookies",
+        "price" : 30.0,
         "category" : "Sweets"
       } ]
     }, {
@@ -240,8 +240,8 @@
       "niceScoreHistory" : [ 6.0, 10.0 ],
       "assignedBudget" : 48.372093023255815,
       "receivedGifts" : [ {
-        "productName" : "Bag of Candy",
-        "price" : 20.0,
+        "productName" : "Milk and Cookies",
+        "price" : 30.0,
         "category" : "Sweets"
       }, {
         "productName" : "Castle",
@@ -290,11 +290,7 @@
       "averageScore" : 6.7,
       "niceScoreHistory" : [ 10.0, 3.0, 5.0, 9.0 ],
       "assignedBudget" : 36.75105485232068,
-      "receivedGifts" : [ {
-        "productName" : "Bag of Candy",
-        "price" : 20.0,
-        "category" : "Sweets"
-      } ]
+      "receivedGifts" : [ ]
     }, {
       "id" : 3,
       "lastName" : "Stoica",
@@ -306,9 +302,9 @@
       "niceScoreHistory" : [ 6.0, 10.0, 8.0 ],
       "assignedBudget" : 43.881856540084385,
       "receivedGifts" : [ {
-        "productName" : "Milk and Cookies",
-        "price" : 30.0,
-        "category" : "Sweets"
+        "productName" : "Castle",
+        "price" : 15.0,
+        "category" : "Toys"
       } ]
     } ]
   } ]
