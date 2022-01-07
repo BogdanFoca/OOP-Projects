@@ -13,13 +13,11 @@
       "receivedGifts" : [ {
         "productName" : "Puzzle",
         "price" : 50.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 4
+        "category" : "Toys"
       } ]
     }, {
       "id" : 1,
@@ -45,18 +43,15 @@
       "receivedGifts" : [ {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 6
+        "category" : "Books"
       }, {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 3
+        "category" : "Clothes"
       }, {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 4
+        "category" : "Toys"
       } ]
     } ]
   }, {
@@ -73,13 +68,11 @@
       "receivedGifts" : [ {
         "productName" : "Puzzle",
         "price" : 50.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 4
+        "category" : "Toys"
       } ]
     }, {
       "id" : 1,
@@ -105,18 +98,15 @@
       "receivedGifts" : [ {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 6
+        "category" : "Books"
       }, {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 3
+        "category" : "Clothes"
       }, {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 4
+        "category" : "Toys"
       } ]
     } ]
   }, {
@@ -133,13 +123,11 @@
       "receivedGifts" : [ {
         "productName" : "Puzzle",
         "price" : 50.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 4
+        "category" : "Toys"
       } ]
     }, {
       "id" : 1,
@@ -165,13 +153,11 @@
       "receivedGifts" : [ {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 6
+        "category" : "Books"
       }, {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 3
+        "category" : "Clothes"
       } ]
     } ]
   } ]

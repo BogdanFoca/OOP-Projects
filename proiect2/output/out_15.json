@@ -13,18 +13,15 @@
       "receivedGifts" : [ {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 2
+        "category" : "Books"
       }, {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 1
+        "category" : "Clothes"
       }, {
         "productName" : "Castle",
         "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       } ]
     }, {
       "id" : 1,
@@ -39,8 +36,7 @@
       "receivedGifts" : [ {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 1
+        "category" : "Clothes"
       } ]
     } ]
   }, {
@@ -57,18 +53,15 @@
       "receivedGifts" : [ {
         "productName" : "Castle",
         "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 2
+        "category" : "Books"
       }, {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 1
+        "category" : "Clothes"
       } ]
     }, {
       "id" : 1,
@@ -83,13 +76,11 @@
       "receivedGifts" : [ {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 1
+        "category" : "Clothes"
       }, {
         "productName" : "Castle",
         "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       } ]
     } ]
   }, {
@@ -106,23 +97,19 @@
       "receivedGifts" : [ {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 1
+        "category" : "Clothes"
       }, {
         "productName" : "Chocolate",
         "price" : 15.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       }, {
         "productName" : "Castle",
         "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 2
+        "category" : "Books"
       } ]
     }, {
       "id" : 1,
@@ -137,13 +124,11 @@
       "receivedGifts" : [ {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 1
+        "category" : "Clothes"
       }, {
         "productName" : "Castle",
         "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       } ]
     } ]
   }, {
@@ -160,18 +145,15 @@
       "receivedGifts" : [ {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 2
+        "category" : "Books"
       }, {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 1
+        "category" : "Clothes"
       }, {
         "productName" : "Castle",
         "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       } ]
     }, {
       "id" : 1,
@@ -186,13 +168,11 @@
       "receivedGifts" : [ {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 1
+        "category" : "Clothes"
       }, {
         "productName" : "Castle",
         "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       } ]
     } ]
   } ]

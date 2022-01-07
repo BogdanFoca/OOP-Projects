@@ -12,7 +12,7 @@ public enum Strategies {
     @JsonProperty("niceScoreCity")
     NICE_SCORE_CITY("niceScoreCity");
 
-    public final String value;
+    private final String value;
 
     Strategies(final String value) {
         this.value = value;

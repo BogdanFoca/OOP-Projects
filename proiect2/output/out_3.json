@@ -13,18 +13,15 @@
       "receivedGifts" : [ {
         "productName" : "Chocolate",
         "price" : 15.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       }, {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Uno",
         "price" : 10.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     }, {
       "id" : 1,
@@ -50,23 +47,19 @@
       "receivedGifts" : [ {
         "productName" : "Uno",
         "price" : 10.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 2
+        "category" : "Clothes"
       }, {
         "productName" : "Chocolate",
         "price" : 15.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       } ]
     }, {
       "id" : 3,
@@ -81,23 +74,19 @@
       "receivedGifts" : [ {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 2
+        "category" : "Clothes"
       }, {
         "productName" : "Chocolate",
         "price" : 15.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       }, {
-        "productName" : "Teddy Bear",
-        "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "productName" : "Doll",
+        "price" : 10.0,
+        "category" : "Toys"
       }, {
         "productName" : "Uno",
         "price" : 10.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     } ]
   }, {
@@ -114,18 +103,15 @@
       "receivedGifts" : [ {
         "productName" : "Chocolate",
         "price" : 15.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       }, {
-        "productName" : "Teddy Bear",
-        "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "productName" : "Doll",
+        "price" : 10.0,
+        "category" : "Toys"
       }, {
         "productName" : "Uno",
         "price" : 10.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     }, {
       "id" : 1,
@@ -151,23 +137,19 @@
       "receivedGifts" : [ {
         "productName" : "Uno",
         "price" : 10.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Doll",
         "price" : 10.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 2
+        "category" : "Clothes"
       }, {
         "productName" : "Twilight",
         "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 4
+        "category" : "Books"
       } ]
     }, {
       "id" : 3,
@@ -182,23 +164,19 @@
       "receivedGifts" : [ {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 2
+        "category" : "Clothes"
       }, {
         "productName" : "Chocolate",
         "price" : 15.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       }, {
-        "productName" : "Doll",
-        "price" : 10.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "productName" : "Castle",
+        "price" : 15.0,
+        "category" : "Toys"
       }, {
         "productName" : "Uno",
         "price" : 10.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     } ]
   }, {
@@ -215,18 +193,15 @@
       "receivedGifts" : [ {
         "productName" : "Bag of Candy",
         "price" : 20.0,
-        "category" : "Sweets",
-        "quantity" : 5
+        "category" : "Sweets"
       }, {
-        "productName" : "Doll",
-        "price" : 10.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "productName" : "Castle",
+        "price" : 15.0,
+        "category" : "Toys"
       }, {
         "productName" : "Uno",
         "price" : 10.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     }, {
       "id" : 1,
@@ -252,23 +227,19 @@
       "receivedGifts" : [ {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 2
+        "category" : "Clothes"
       }, {
         "productName" : "Bag of Candy",
         "price" : 20.0,
-        "category" : "Sweets",
-        "quantity" : 5
+        "category" : "Sweets"
       }, {
         "productName" : "Castle",
         "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 7
+        "category" : "Toys"
       }, {
         "productName" : "Uno",
         "price" : 10.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     } ]
   }, {
@@ -296,23 +267,19 @@
       "receivedGifts" : [ {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 2
+        "category" : "Clothes"
       }, {
         "productName" : "Bag of Candy",
         "price" : 20.0,
-        "category" : "Sweets",
-        "quantity" : 5
+        "category" : "Sweets"
       }, {
         "productName" : "Castle",
         "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 7
+        "category" : "Toys"
       }, {
         "productName" : "Uno",
         "price" : 10.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     } ]
   } ]

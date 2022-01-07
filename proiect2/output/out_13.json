@@ -13,13 +13,11 @@
       "receivedGifts" : [ {
         "productName" : "Bag of Candy",
         "price" : 20.0,
-        "category" : "Sweets",
-        "quantity" : 2
+        "category" : "Sweets"
       }, {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       } ]
     }, {
       "id" : 1,
@@ -34,13 +32,11 @@
       "receivedGifts" : [ {
         "productName" : "Doll",
         "price" : 10.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Twilight",
         "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 5
+        "category" : "Books"
       } ]
     }, {
       "id" : 2,
@@ -55,13 +51,11 @@
       "receivedGifts" : [ {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Doll",
         "price" : 10.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       } ]
     } ]
   }, {
@@ -76,31 +70,9 @@
       "niceScoreHistory" : [ 5.0, 0.0 ],
       "assignedBudget" : 16.046511627906977,
       "receivedGifts" : [ {
-        "productName" : "Doll",
-        "price" : 10.0,
-        "category" : "Toys",
-        "quantity" : 0
-      } ]
-    }, {
-      "id" : 2,
-      "lastName" : "Pop",
-      "firstName" : "Andreea",
-      "city" : "Timisoara",
-      "age" : 11,
-      "giftsPreferences" : [ "Toys", "Board Games" ],
-      "averageScore" : 9.0,
-      "niceScoreHistory" : [ 9.0 ],
-      "assignedBudget" : 57.76744186046511,
-      "receivedGifts" : [ {
-        "productName" : "Monopoly",
-        "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
-      }, {
-        "productName" : "Doll",
-        "price" : 10.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "productName" : "Castle",
+        "price" : 15.0,
+        "category" : "Toys"
       } ]
     }, {
       "id" : 1,
@@ -113,15 +85,32 @@
       "niceScoreHistory" : [ 10.0 ],
       "assignedBudget" : 64.18604651162791,
       "receivedGifts" : [ {
-        "productName" : "Castle",
-        "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 2
+        "productName" : "Monopoly",
+        "price" : 30.0,
+        "category" : "Board Games"
+      }, {
+        "productName" : "Doll",
+        "price" : 10.0,
+        "category" : "Toys"
+      } ]
+    }, {
+      "id" : 2,
+      "lastName" : "Pop",
+      "firstName" : "Andreea",
+      "city" : "Timisoara",
+      "age" : 11,
+      "giftsPreferences" : [ "Toys", "Board Games" ],
+      "averageScore" : 9.0,
+      "niceScoreHistory" : [ 9.0 ],
+      "assignedBudget" : 57.76744186046511,
+      "receivedGifts" : [ {
+        "productName" : "Doll",
+        "price" : 10.0,
+        "category" : "Toys"
       }, {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     } ]
   }, {
@@ -138,23 +127,19 @@
       "receivedGifts" : [ {
         "productName" : "Headphones",
         "price" : 100.0,
-        "category" : "Technology",
-        "quantity" : 4
+        "category" : "Technology"
       }, {
         "productName" : "Bag of Candy",
         "price" : 20.0,
-        "category" : "Sweets",
-        "quantity" : 2
+        "category" : "Sweets"
       }, {
         "productName" : "Castle",
         "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 2
+        "category" : "Toys"
       }, {
-        "productName" : "Monopoly",
-        "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "productName" : "Puzzle",
+        "price" : 50.0,
+        "category" : "Board Games"
       } ]
     }, {
       "id" : 2,
@@ -169,23 +154,19 @@
       "receivedGifts" : [ {
         "productName" : "Headphones",
         "price" : 100.0,
-        "category" : "Technology",
-        "quantity" : 4
+        "category" : "Technology"
       }, {
         "productName" : "Castle",
         "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 2
+        "category" : "Toys"
       }, {
         "productName" : "Twilight",
         "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 5
+        "category" : "Books"
       }, {
-        "productName" : "Puzzle",
-        "price" : 50.0,
-        "category" : "Board Games",
-        "quantity" : 2
+        "productName" : "Monopoly",
+        "price" : 30.0,
+        "category" : "Board Games"
       } ]
     } ]
   }, {
@@ -202,18 +183,15 @@
       "receivedGifts" : [ {
         "productName" : "Puzzle",
         "price" : 50.0,
-        "category" : "Board Games",
-        "quantity" : 2
+        "category" : "Board Games"
       }, {
         "productName" : "Castle",
         "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 2
+        "category" : "Toys"
       }, {
         "productName" : "Bag of Candy",
         "price" : 20.0,
-        "category" : "Sweets",
-        "quantity" : 2
+        "category" : "Sweets"
       } ]
     }, {
       "id" : 2,
@@ -228,18 +206,15 @@
       "receivedGifts" : [ {
         "productName" : "Headphones",
         "price" : 100.0,
-        "category" : "Technology",
-        "quantity" : 4
+        "category" : "Technology"
       }, {
         "productName" : "Castle",
         "price" : 15.0,
-        "category" : "Toys",
-        "quantity" : 2
+        "category" : "Toys"
       }, {
         "productName" : "Twilight",
         "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 5
+        "category" : "Books"
       } ]
     } ]
   } ]

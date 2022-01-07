@@ -37,8 +37,7 @@
       "receivedGifts" : [ {
         "productName" : "Doll",
         "price" : 10.0,
-        "category" : "Toys",
-        "quantity" : 3
+        "category" : "Toys"
       } ]
     }, {
       "id" : 1,

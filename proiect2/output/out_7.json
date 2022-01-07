@@ -13,13 +13,11 @@
       "receivedGifts" : [ {
         "productName" : "Uno",
         "price" : 10.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Twilight",
         "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 0
+        "category" : "Books"
       } ]
     }, {
       "id" : 1,
@@ -34,18 +32,15 @@
       "receivedGifts" : [ {
         "productName" : "Uno",
         "price" : 10.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Doll",
         "price" : 10.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Gummy Bears",
         "price" : 10.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       } ]
     }, {
       "id" : 2,
@@ -60,18 +55,15 @@
       "receivedGifts" : [ {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Lego",
         "price" : 30.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Twilight",
         "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 0
+        "category" : "Books"
       } ]
     }, {
       "id" : 3,
@@ -86,8 +78,7 @@
       "receivedGifts" : [ {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     } ]
   }, {
@@ -104,13 +95,11 @@
       "receivedGifts" : [ {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Harry Potter",
         "price" : 35.0,
-        "category" : "Books",
-        "quantity" : 0
+        "category" : "Books"
       } ]
     }, {
       "id" : 1,
@@ -125,13 +114,11 @@
       "receivedGifts" : [ {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Gummy Bears",
         "price" : 10.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       } ]
     }, {
       "id" : 2,
@@ -146,13 +133,11 @@
       "receivedGifts" : [ {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Harry Potter",
         "price" : 35.0,
-        "category" : "Books",
-        "quantity" : 0
+        "category" : "Books"
       } ]
     }, {
       "id" : 3,
@@ -167,8 +152,7 @@
       "receivedGifts" : [ {
         "productName" : "Puzzle",
         "price" : 50.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     } ]
   }, {
@@ -185,13 +169,11 @@
       "receivedGifts" : [ {
         "productName" : "Puzzle",
         "price" : 50.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Harry Potter",
         "price" : 35.0,
-        "category" : "Books",
-        "quantity" : 0
+        "category" : "Books"
       } ]
     }, {
       "id" : 1,
@@ -206,13 +188,11 @@
       "receivedGifts" : [ {
         "productName" : "Puzzle",
         "price" : 50.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       }, {
         "productName" : "Gummy Bears",
         "price" : 10.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       } ]
     }, {
       "id" : 2,
@@ -227,8 +207,7 @@
       "receivedGifts" : [ {
         "productName" : "Shoes",
         "price" : 70.0,
-        "category" : "Clothes",
-        "quantity" : 0
+        "category" : "Clothes"
       } ]
     }, {
       "id" : 3,
@@ -267,13 +246,11 @@
       "receivedGifts" : [ {
         "productName" : "Gummy Bears",
         "price" : 10.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       }, {
         "productName" : "Shoes",
         "price" : 70.0,
-        "category" : "Clothes",
-        "quantity" : 0
+        "category" : "Clothes"
       } ]
     }, {
       "id" : 2,
@@ -288,8 +265,7 @@
       "receivedGifts" : [ {
         "productName" : "Shoes",
         "price" : 70.0,
-        "category" : "Clothes",
-        "quantity" : 0
+        "category" : "Clothes"
       } ]
     }, {
       "id" : 3,
@@ -328,13 +304,11 @@
       "receivedGifts" : [ {
         "productName" : "Gummy Bears",
         "price" : 10.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       }, {
         "productName" : "Shoes",
         "price" : 70.0,
-        "category" : "Clothes",
-        "quantity" : 0
+        "category" : "Clothes"
       } ]
     }, {
       "id" : 2,
@@ -349,8 +323,7 @@
       "receivedGifts" : [ {
         "productName" : "Shoes",
         "price" : 70.0,
-        "category" : "Clothes",
-        "quantity" : 0
+        "category" : "Clothes"
       } ]
     }, {
       "id" : 3,
@@ -389,8 +362,7 @@
       "receivedGifts" : [ {
         "productName" : "Gummy Bears",
         "price" : 10.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       } ]
     }, {
       "id" : 2,

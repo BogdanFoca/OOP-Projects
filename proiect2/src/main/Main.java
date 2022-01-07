@@ -42,6 +42,7 @@ public final class Main {
 
         for (int i = 1; i < Objects.requireNonNull(directory.listFiles()).length + 1; i++) {
             File file = new File(Constants.INPUT_PATH + i + ".json");
+            System.out.println(i);
             if (file.exists()) {
                 Database.getInstance().clear();
                 JSONReader jsonReader = new JSONReader();

@@ -13,18 +13,15 @@
       "receivedGifts" : [ {
         "productName" : "Lego",
         "price" : 30.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 0
+        "category" : "Clothes"
       }, {
         "productName" : "Gummy Bears",
         "price" : 10.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       } ]
     } ]
   }, {
@@ -41,13 +38,11 @@
       "receivedGifts" : [ {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 0
+        "category" : "Clothes"
       }, {
         "productName" : "Bag of Candy",
         "price" : 20.0,
-        "category" : "Sweets",
-        "quantity" : 0
+        "category" : "Sweets"
       } ]
     }, {
       "id" : 3,
@@ -62,13 +57,11 @@
       "receivedGifts" : [ {
         "productName" : "Shoes",
         "price" : 70.0,
-        "category" : "Clothes",
-        "quantity" : 2
+        "category" : "Clothes"
       }, {
         "productName" : "Milk and Cookies",
         "price" : 30.0,
-        "category" : "Sweets",
-        "quantity" : 4
+        "category" : "Sweets"
       } ]
     }, {
       "id" : 4,
@@ -83,8 +76,7 @@
       "receivedGifts" : [ {
         "productName" : "Milk and Cookies",
         "price" : 30.0,
-        "category" : "Sweets",
-        "quantity" : 4
+        "category" : "Sweets"
       } ]
     } ]
   }, {
@@ -101,13 +93,11 @@
       "receivedGifts" : [ {
         "productName" : "Shoes",
         "price" : 70.0,
-        "category" : "Clothes",
-        "quantity" : 2
+        "category" : "Clothes"
       }, {
         "productName" : "Milk and Cookies",
         "price" : 30.0,
-        "category" : "Sweets",
-        "quantity" : 4
+        "category" : "Sweets"
       } ]
     }, {
       "id" : 3,
@@ -122,13 +112,11 @@
       "receivedGifts" : [ {
         "productName" : "Shoes",
         "price" : 70.0,
-        "category" : "Clothes",
-        "quantity" : 2
+        "category" : "Clothes"
       }, {
         "productName" : "Milk and Cookies",
         "price" : 30.0,
-        "category" : "Sweets",
-        "quantity" : 4
+        "category" : "Sweets"
       } ]
     }, {
       "id" : 4,
@@ -143,13 +131,11 @@
       "receivedGifts" : [ {
         "productName" : "Shoes",
         "price" : 70.0,
-        "category" : "Clothes",
-        "quantity" : 2
+        "category" : "Clothes"
       }, {
         "productName" : "Milk and Cookies",
         "price" : 30.0,
-        "category" : "Sweets",
-        "quantity" : 4
+        "category" : "Sweets"
       } ]
     } ]
   } ]

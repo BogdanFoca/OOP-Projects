@@ -2,8 +2,18 @@ package simulation;
 
 import enums.Strategies;
 
-public class StrategyFactory {
-    public static GiftStrategy createGiftStrategy(Strategies strategy) {
+public final class StrategyFactory {
+
+    private StrategyFactory() {
+
+    }
+
+    /**
+     *
+     * @param strategy
+     * @return
+     */
+    public static GiftStrategy createGiftStrategy(final Strategies strategy) {
         switch (strategy) {
             case ID:
                 return new IdGiftStrategy();

@@ -1,14 +1,18 @@
 package simulation;
 
+import database.Database;
 import utils.Comparers;
 import utils.JSONOutput;
 
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.List;
 
-public class NiceScoreStrategy implements GiftStrategy{
+public final class NiceScoreStrategy implements GiftStrategy {
     @Override
-    public void applyStrategy(List<JSONOutput.OutputChild> outputChildren) {
-        outputChildren.sort(new Comparers().new CompareOutputChildrenByNiceScore());
+    public void applyStrategy(final List<JSONOutput.OutputChild> outputChildren) {
+        Database.getInstance().getChildren().sort(new Comparers.CompareChildrenByNiceScore());
+        Collections.reverse(Database.getInstance().getChildren());
+        outputChildren.sort(new Comparers.CompareOutputChildrenByNiceScore());
+        Collections.reverse(outputChildren);
     }
 }

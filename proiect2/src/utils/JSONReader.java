@@ -18,12 +18,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class JSONReader {
     private int numberOfYears;
     private double santaBudget;
     private final List<Child> initialChildList = new ArrayList<Child>();
-    private final List<Gift> initialGiftList = new ArrayList<Gift>();
+    private List<Gift> initialGiftList = new ArrayList<Gift>();
     private List<AnnualChange> annualChanges = new ArrayList<AnnualChange>();
 
     public int getNumberOfYears() {
@@ -103,6 +104,7 @@ public final class JSONReader {
                         ));
             }
         }
+        initialGiftList = initialGiftList.stream().distinct().collect(Collectors.toList());
         if (jsonAnnualChanges != null) {
             for (Object o : jsonAnnualChanges) {
                 annualChanges.add(new AnnualChange(

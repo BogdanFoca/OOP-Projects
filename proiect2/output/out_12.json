@@ -13,13 +13,11 @@
       "receivedGifts" : [ {
         "productName" : "Gummy Bears",
         "price" : 10.0,
-        "category" : "Sweets",
-        "quantity" : 5
+        "category" : "Sweets"
       }, {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       } ]
     }, {
       "id" : 1,
@@ -34,18 +32,15 @@
       "receivedGifts" : [ {
         "productName" : "Dress",
         "price" : 45.0,
-        "category" : "Clothes",
-        "quantity" : 0
+        "category" : "Clothes"
       }, {
         "productName" : "Uno",
         "price" : 10.0,
-        "category" : "Board Games",
-        "quantity" : 7
+        "category" : "Board Games"
       }, {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 4
+        "category" : "Books"
       } ]
     } ]
   }, {
@@ -62,8 +57,7 @@
       "receivedGifts" : [ {
         "productName" : "Gummy Bears",
         "price" : 10.0,
-        "category" : "Sweets",
-        "quantity" : 5
+        "category" : "Sweets"
       } ]
     }, {
       "id" : 1,
@@ -78,13 +72,11 @@
       "receivedGifts" : [ {
         "productName" : "Uno",
         "price" : 10.0,
-        "category" : "Board Games",
-        "quantity" : 7
+        "category" : "Board Games"
       }, {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 4
+        "category" : "Books"
       } ]
     } ]
   }, {

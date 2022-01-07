@@ -15,7 +15,7 @@ public enum Elfs {
     @JsonProperty("White")
     WHITE("White");
 
-    public final String value;
+    private final String value;
 
     Elfs(final String value) {
         this.value = value;

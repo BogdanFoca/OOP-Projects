@@ -13,8 +13,7 @@
       "receivedGifts" : [ {
         "productName" : "Twilight",
         "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 1
+        "category" : "Books"
       } ]
     }, {
       "id" : 1,
@@ -29,13 +28,11 @@
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     }, {
       "id" : 2,
@@ -50,13 +47,11 @@
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     }, {
       "id" : 3,
@@ -71,22 +66,34 @@
       "receivedGifts" : [ {
         "productName" : "Chocolate",
         "price" : 15.0,
-        "category" : "Sweets",
-        "quantity" : 1
+        "category" : "Sweets"
       }, {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     } ]
   }, {
     "children" : [ {
+      "id" : 0,
+      "lastName" : "Stoica",
+      "firstName" : "Andreea",
+      "city" : "Brasov",
+      "age" : 8,
+      "giftsPreferences" : [ "Technology", "Books" ],
+      "averageScore" : 8.0,
+      "niceScoreHistory" : [ 8.0, 8.0 ],
+      "assignedBudget" : 538.6666666666666,
+      "receivedGifts" : [ {
+        "productName" : "Twilight",
+        "price" : 30.0,
+        "category" : "Books"
+      } ]
+    }, {
       "id" : 1,
       "lastName" : "Popescu",
       "firstName" : "Matei",
@@ -99,8 +106,19 @@
       "receivedGifts" : [ {
         "productName" : "Twilight",
         "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 1
+        "category" : "Books"
+      }, {
+        "productName" : "Chocolate",
+        "price" : 15.0,
+        "category" : "Sweets"
+      }, {
+        "productName" : "Doll",
+        "price" : 10.0,
+        "category" : "Toys"
+      }, {
+        "productName" : "Puzzle",
+        "price" : 50.0,
+        "category" : "Board Games"
       } ]
     }, {
       "id" : 2,
@@ -113,55 +131,36 @@
       "niceScoreHistory" : [ 3.0, 10.0 ],
       "assignedBudget" : 437.66666666666663,
       "receivedGifts" : [ {
-        "productName" : "Twilight",
-        "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 1
-      }, {
-        "productName" : "Chocolate",
-        "price" : 15.0,
-        "category" : "Sweets",
-        "quantity" : 1
+        "productName" : "Handbag",
+        "price" : 200.0,
+        "category" : "Clothes"
       }, {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Puzzle",
         "price" : 50.0,
-        "category" : "Board Games",
-        "quantity" : 3
-      } ]
-    }, {
-      "id" : 0,
-      "lastName" : "Stoica",
-      "firstName" : "Andreea",
-      "city" : "Brasov",
-      "age" : 8,
-      "giftsPreferences" : [ "Technology", "Books" ],
-      "averageScore" : 8.0,
-      "niceScoreHistory" : [ 8.0, 8.0 ],
-      "assignedBudget" : 538.6666666666666,
-      "receivedGifts" : [ {
-        "productName" : "Handbag",
-        "price" : 200.0,
-        "category" : "Clothes",
-        "quantity" : 7
-      }, {
-        "productName" : "Doll",
-        "price" : 10.0,
-        "category" : "Toys",
-        "quantity" : 0
-      }, {
-        "productName" : "Puzzle",
-        "price" : 50.0,
-        "category" : "Board Games",
-        "quantity" : 3
+        "category" : "Board Games"
       } ]
     } ]
   }, {
     "children" : [ {
+      "id" : 0,
+      "lastName" : "Stoica",
+      "firstName" : "Andreea",
+      "city" : "Brasov",
+      "age" : 9,
+      "giftsPreferences" : [ "Technology", "Books" ],
+      "averageScore" : 8.333333333333334,
+      "niceScoreHistory" : [ 8.0, 8.0, 9.0 ],
+      "assignedBudget" : 539.3203883495146,
+      "receivedGifts" : [ {
+        "productName" : "Twilight",
+        "price" : 30.0,
+        "category" : "Books"
+      } ]
+    }, {
       "id" : 1,
       "lastName" : "Popescu",
       "firstName" : "Matei",
@@ -172,10 +171,21 @@
       "niceScoreHistory" : [ 2.0 ],
       "assignedBudget" : 129.4368932038835,
       "receivedGifts" : [ {
+        "productName" : "Doll",
+        "price" : 10.0,
+        "category" : "Toys"
+      }, {
+        "productName" : "Puzzle",
+        "price" : 50.0,
+        "category" : "Board Games"
+      }, {
         "productName" : "Twilight",
         "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 1
+        "category" : "Books"
+      }, {
+        "productName" : "Chocolate",
+        "price" : 15.0,
+        "category" : "Sweets"
       } ]
     }, {
       "id" : 2,
@@ -188,51 +198,17 @@
       "niceScoreHistory" : [ 3.0, 10.0, 6.0 ],
       "assignedBudget" : 442.24271844660194,
       "receivedGifts" : [ {
-        "productName" : "Doll",
-        "price" : 10.0,
-        "category" : "Toys",
-        "quantity" : 0
-      }, {
-        "productName" : "Puzzle",
-        "price" : 50.0,
-        "category" : "Board Games",
-        "quantity" : 3
-      }, {
-        "productName" : "Twilight",
-        "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 1
-      }, {
-        "productName" : "Chocolate",
-        "price" : 15.0,
-        "category" : "Sweets",
-        "quantity" : 1
-      } ]
-    }, {
-      "id" : 0,
-      "lastName" : "Stoica",
-      "firstName" : "Andreea",
-      "city" : "Brasov",
-      "age" : 9,
-      "giftsPreferences" : [ "Technology", "Books" ],
-      "averageScore" : 8.333333333333334,
-      "niceScoreHistory" : [ 8.0, 8.0, 9.0 ],
-      "assignedBudget" : 539.3203883495146,
-      "receivedGifts" : [ {
         "productName" : "Handbag",
         "price" : 200.0,
-        "category" : "Clothes",
-        "quantity" : 7
+        "category" : "Clothes"
       }, {
         "productName" : "Doll",
         "price" : 10.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Puzzle",
         "price" : 50.0,
-        "category" : "Board Games",
-        "quantity" : 3
+        "category" : "Board Games"
       } ]
     } ]
   } ]

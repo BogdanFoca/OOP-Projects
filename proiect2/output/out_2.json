@@ -13,13 +13,11 @@
       "receivedGifts" : [ {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 0
+        "category" : "Books"
       }, {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     }, {
       "id" : 2,
@@ -34,13 +32,11 @@
       "receivedGifts" : [ {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 0
+        "category" : "Books"
       }, {
         "productName" : "Shoes",
         "price" : 70.0,
-        "category" : "Clothes",
-        "quantity" : 0
+        "category" : "Clothes"
       } ]
     }, {
       "id" : 3,
@@ -55,13 +51,11 @@
       "receivedGifts" : [ {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 0
+        "category" : "Books"
       }, {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     } ]
   }, {
@@ -78,13 +72,11 @@
       "receivedGifts" : [ {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 0
+        "category" : "Books"
       }, {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     }, {
       "id" : 2,
@@ -99,13 +91,11 @@
       "receivedGifts" : [ {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 0
+        "category" : "Books"
       }, {
         "productName" : "Shoes",
         "price" : 70.0,
-        "category" : "Clothes",
-        "quantity" : 0
+        "category" : "Clothes"
       } ]
     }, {
       "id" : 3,
@@ -120,13 +110,11 @@
       "receivedGifts" : [ {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 0
+        "category" : "Books"
       }, {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     } ]
   }, {
@@ -143,13 +131,11 @@
       "receivedGifts" : [ {
         "productName" : "Diary of a Wimpy Kid",
         "price" : 25.0,
-        "category" : "Books",
-        "quantity" : 0
+        "category" : "Books"
       }, {
         "productName" : "Shoes",
         "price" : 70.0,
-        "category" : "Clothes",
-        "quantity" : 0
+        "category" : "Clothes"
       } ]
     }, {
       "id" : 3,
@@ -164,8 +150,7 @@
       "receivedGifts" : [ {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     } ]
   }, {
@@ -182,8 +167,7 @@
       "receivedGifts" : [ {
         "productName" : "Shoes",
         "price" : 70.0,
-        "category" : "Clothes",
-        "quantity" : 0
+        "category" : "Clothes"
       } ]
     }, {
       "id" : 3,
@@ -198,8 +182,7 @@
       "receivedGifts" : [ {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 0
+        "category" : "Board Games"
       } ]
     } ]
   } ]

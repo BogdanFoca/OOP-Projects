@@ -13,8 +13,7 @@
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       } ]
     }, {
       "id" : 1,
@@ -29,13 +28,11 @@
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Twilight",
         "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 3
+        "category" : "Books"
       } ]
     } ]
   }, {
@@ -52,8 +49,7 @@
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       } ]
     }, {
       "id" : 1,
@@ -68,13 +64,11 @@
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 7
+        "category" : "Board Games"
       } ]
     } ]
   }, {
@@ -91,13 +85,11 @@
       "receivedGifts" : [ {
         "productName" : "Twilight",
         "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 3
+        "category" : "Books"
       }, {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       } ]
     }, {
       "id" : 1,
@@ -112,8 +104,7 @@
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       } ]
     } ]
   }, {
@@ -130,18 +121,15 @@
       "receivedGifts" : [ {
         "productName" : "Teddy Bear",
         "price" : 5.0,
-        "category" : "Toys",
-        "quantity" : 0
+        "category" : "Toys"
       }, {
         "productName" : "Twilight",
         "price" : 30.0,
-        "category" : "Books",
-        "quantity" : 3
+        "category" : "Books"
       }, {
         "productName" : "Monopoly",
         "price" : 30.0,
-        "category" : "Board Games",
-        "quantity" : 7
+        "category" : "Board Games"
       } ]
     } ]
   } ]
