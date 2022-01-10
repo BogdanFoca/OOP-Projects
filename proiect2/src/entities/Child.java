@@ -78,8 +78,8 @@ public final class Child {
         }
 
         /**
-         *
-         * @param niceScoreBonus
+         * Optional parameter niceScoreBonus
+         * @param bonus the niceScoreBonus
          * @return
          */
         public Builder niceScoreBonus(final int bonus) {
@@ -88,8 +88,8 @@ public final class Child {
         }
 
         /**
-         *
-         * @return
+         *  Build the childs
+         * @return the built child
          */
         public Child build() {
             return new Child(this);
@@ -206,7 +206,8 @@ public final class Child {
     public void setAverageNiceScore() {
         switch (childCategory) {
             case Baby:
-                averageScore = Constants.BABY_SCORE + niceScoreBonus;
+                averageScore = Constants.BABY_SCORE;
+                averageScore += averageScore * niceScoreBonus / Constants.ONE_HUNDRED;
                 averageScore = averageScore > Constants.MAX_SCORE
                         ? Constants.MAX_SCORE : averageScore;
                 break;
@@ -216,7 +217,8 @@ public final class Child {
                     sum += d;
                 }
                 sum /= niceScoreHistory.size();
-                averageScore = sum + niceScoreBonus;
+                averageScore = sum;
+                averageScore += averageScore * niceScoreBonus / Constants.ONE_HUNDRED;
                 averageScore = averageScore > Constants.MAX_SCORE
                         ? Constants.MAX_SCORE : averageScore;
                 break;
@@ -226,7 +228,8 @@ public final class Child {
                     sump += niceScoreHistory.get(i) * (i + 1);
                 }
                 sump /= (double) niceScoreHistory.size() * (niceScoreHistory.size() + 1) / 2;
-                averageScore = sump + niceScoreBonus;
+                averageScore = sump;
+                averageScore += averageScore * niceScoreBonus / Constants.ONE_HUNDRED;
                 averageScore = averageScore > Constants.MAX_SCORE
                         ? Constants.MAX_SCORE : averageScore;
                 break;

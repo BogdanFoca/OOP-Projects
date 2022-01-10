@@ -214,8 +214,9 @@ public final class JSONReader {
                                 ? ((Number) ((JSONObject) jo)
                                 .get(Constants.NICE_SCORE)).doubleValue() : null,
                         convertJSONArrayToGiftCategories((JSONArray) ((JSONObject) jo)
-                                .get(Constants.GIFT_PREFERENCES))
-                ));
+                                .get(Constants.GIFT_PREFERENCES)),
+                        Elfs.valueOfElfLabel((String) ((JSONObject) jo).get(Constants.ELF)))
+                );
             }
             return finalArray;
         } else {

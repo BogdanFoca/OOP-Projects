@@ -3,6 +3,7 @@ package utils;
 import entities.Child;
 import entities.Gift;
 import enums.Category;
+import enums.Elfs;
 import enums.Strategies;
 
 import java.util.ArrayList;
@@ -53,12 +54,14 @@ public final class AnnualChange {
         private int id;
         private Double niceScore;
         private List<Category> newPreferences = new ArrayList<Category>();
+        private Elfs newElf;
 
         public ChildUpdate(final int id, final Double niceScore,
-                           final List<Category> newPreferences) {
+                           final List<Category> newPreferences, final Elfs newElf) {
             this.id = id;
             this.niceScore = niceScore;
             this.newPreferences = newPreferences;
+            this.newElf = newElf;
         }
 
         public int getId() {
@@ -71,6 +74,10 @@ public final class AnnualChange {
 
         public List<Category> getNewPreferences() {
             return newPreferences;
+        }
+
+        public Elfs getNewElf() {
+            return newElf;
         }
     }
 }

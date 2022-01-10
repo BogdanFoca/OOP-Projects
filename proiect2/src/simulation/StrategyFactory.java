@@ -9,8 +9,8 @@ public final class StrategyFactory {
     }
 
     /**
-     *
-     * @param strategy
+     * Creates strategy based on argument
+     * @param strategy what strategy to create
      * @return
      */
     public static GiftStrategy createGiftStrategy(final Strategies strategy) {
