@@ -150,9 +150,6 @@ public final class SimulationManager {
                         outputChildren.get(i).addGift(gift);
                         budgetByChild.put(children.get(i),
                                 budgetByChild.get(children.get(i)) - gift.getPrice());
-                        if (gift.getQuantity() == 0) {
-                            Database.getInstance().getGifts().remove(gift);
-                        }
                     }
                 }
             }
@@ -200,9 +197,6 @@ public final class SimulationManager {
                     selectedGift.reduceQuantity();
                     children.get(i).receiveGift(selectedGift);
                     outputChildren.get(i).addGift(selectedGift);
-                    if (selectedGift.getQuantity() == 0) {
-                        Database.getInstance().getGifts().remove(selectedGift);
-                    }
                 }
             }
         }

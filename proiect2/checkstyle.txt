@@ -1,25 +1,5 @@
 Starting audit...
 [ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:1: File does not end with a newline. [NewlineAtEndOfFile]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:9:1: Utility classes should not have a public or default constructor. [HideUtilityClassConstructor]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:35:30: '30' is a magic number. [MagicNumber]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:50: Line is longer than 100 characters (found 127). [LineLength]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:52:38: Parameter testNumber should be final. [FinalParameters]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:54: Line is longer than 100 characters (found 138). [LineLength]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:56:9: '}' at column 9 should be on the same line as the next part of a multi-block statement (one that directly contains multiple blocks: if/else-if/else, do/while or try/catch/finally). [RightCurly]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:58: Line is longer than 100 characters (found 105). [LineLength]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:71:40: Parameter testNumber should be final. [FinalParameters]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:91: Line is longer than 100 characters (found 123). [LineLength]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:93:40: Parameter testNumber should be final. [FinalParameters]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:94:24: '>=' is not followed by whitespace. [WhitespaceAround]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:94:45: '12' is a magic number. [MagicNumber]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:97:24: '>=' is not followed by whitespace. [WhitespaceAround]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:97:26: '13' is a magic number. [MagicNumber]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:97:46: '19' is a magic number. [MagicNumber]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:100:24: '>=' is not followed by whitespace. [WhitespaceAround]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:100:26: '20' is a magic number. [MagicNumber]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:100:46: '29' is a magic number. [MagicNumber]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:101:20: '3' is a magic number. [MagicNumber]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\checker\Checker.java:103:16: '4' is a magic number. [MagicNumber]
 [ERROR] D:\Proiecte OOP\oop-asignments\proiect2\.\src\simulation\NiceScoreCityStrategy.java:9:17: Using the '.*' form of import should be avoided - java.util.*. [AvoidStarImport]
 Audit done.
-Checkstyle ends with 22 errors.
+Checkstyle ends with 2 errors.

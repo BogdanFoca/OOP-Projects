@@ -10,7 +10,7 @@ public final class Database {
     private static Database instance;
 
     private int numberOfYears;
-    private double santaBudget;
+    private Double santaBudget;
 
     private List<Child> children = new ArrayList<Child>();
     private List<Gift> gifts = new ArrayList<Gift>();
@@ -34,7 +34,7 @@ public final class Database {
         this.numberOfYears = numberOfYears;
     }
 
-    public double getSantaBudget() {
+    public Double getSantaBudget() {
         return santaBudget;
     }
 
