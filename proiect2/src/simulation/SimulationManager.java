@@ -86,6 +86,9 @@ public final class SimulationManager {
     void roundYear(final AnnualChange annualChange) {
         ArrayList<JSONOutput.OutputChild> outputChildren = new ArrayList<JSONOutput.OutputChild>();
         updateData(annualChange);
+        GiftStrategy strategy2 = StrategyFactory.createGiftStrategy(Strategies.ID);
+        assert strategy2 != null;
+        strategy2.applyStrategy(outputChildren);
         updateBudgets();
         for (Child c : Database.getInstance().getChildren()) {
             outputChildren.add(new JSONOutput().new OutputChild(

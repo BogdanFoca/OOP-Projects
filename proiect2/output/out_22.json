@@ -421,7 +421,7 @@
       "giftsPreferences" : [ "Technology", "Toys", "Books", "Board Games", "Sweets" ],
       "averageScore" : 10.0,
       "niceScoreHistory" : [ 4.0, 10.0 ],
-      "assignedBudget" : 33.62493165664297,
+      "assignedBudget" : 33.62493165664298,
       "receivedGifts" : [ {
         "productName" : "Bike",
         "price" : 25.0,
@@ -436,7 +436,7 @@
       "giftsPreferences" : [ "Sweets", "Board Games", "Toys" ],
       "averageScore" : 2.31,
       "niceScoreHistory" : [ 7.0, 3.0, 0.0, 2.0 ],
-      "assignedBudget" : 7.767359212684527,
+      "assignedBudget" : 7.767359212684528,
       "receivedGifts" : [ ]
     }, {
       "id" : 3,
@@ -447,7 +447,7 @@
       "giftsPreferences" : [ "Technology", "Sweets", "Clothes" ],
       "averageScore" : 3.5133333333333336,
       "niceScoreHistory" : [ 2.0, 5.0, 1.0, 4.0, 0.0 ],
-      "assignedBudget" : 11.813559322033898,
+      "assignedBudget" : 11.8135593220339,
       "receivedGifts" : [ ]
     }, {
       "id" : 4,
@@ -458,7 +458,7 @@
       "giftsPreferences" : [ "Sweets", "Toys", "Board Games", "Technology" ],
       "averageScore" : 5.0,
       "niceScoreHistory" : [ 8.0, 2.0, 0.0 ],
-      "assignedBudget" : 16.812465828321486,
+      "assignedBudget" : 16.81246582832149,
       "receivedGifts" : [ ]
     }, {
       "id" : 5,
@@ -469,7 +469,7 @@
       "giftsPreferences" : [ "Technology", "Sweets", "Books", "Board Games" ],
       "averageScore" : 3.6,
       "niceScoreHistory" : [ 2.0 ],
-      "assignedBudget" : 12.10497539639147,
+      "assignedBudget" : 12.104975396391472,
       "receivedGifts" : [ {
         "productName" : "Headphones",
         "price" : 100.0,
@@ -484,7 +484,7 @@
       "giftsPreferences" : [ "Board Games", "Toys", "Technology", "Sweets", "Books" ],
       "averageScore" : 10.0,
       "niceScoreHistory" : [ 7.0 ],
-      "assignedBudget" : 33.62493165664297,
+      "assignedBudget" : 33.62493165664298,
       "receivedGifts" : [ {
         "productName" : "Bike",
         "price" : 25.0,
@@ -525,7 +525,7 @@
       "giftsPreferences" : [ "Sweets", "Toys", "Books" ],
       "averageScore" : 3.4,
       "niceScoreHistory" : [ 2.0 ],
-      "assignedBudget" : 8.002733734281026,
+      "assignedBudget" : 8.002733734281028,
       "receivedGifts" : [ ]
     } ]
   } ]
