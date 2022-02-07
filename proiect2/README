@@ -1,5 +1,6 @@
 # Santa Claus is coming to ACS students
 Datele din fisier se citesc de obiectul JSONReader care citeste datele in format JSON si creeaza instante ale claselor corespunzatoare cu parametrii citit.
+Pentru Child, in loc de construtor se foloseste un ChildBuilder care are niceScoreBonus ca parametru optional.
 
 Toate informatiile sunt stocate in Database, obiect singleton.
 
@@ -13,18 +14,25 @@ In anul 0:
 
     Se calculeaza bugetul pentru fiecare copil.
     Se creeaza o lista de outputChildren ce va fi adaugata in JSONOutput si se adauga la ea toti copiii din Database, converiti in OutputChild.
+    Folosesc un Strategy Factory pentru a creea un strategy pentru sortarea copiilor dupa ID.
     Se impart cadourile pentru copii.
     Se elimina cei deveniti adulti.
     Se adauga copiii din outputChildren in JSONOutput.
 In fiecare an de dupa:
-
+    Folosesc un Strategy Factory pentru a creea un strategy pentru sortarea copiilor dupa ID.
     Se calculeaza bugetul pentru fiecare copil.
     Se updateaza Databaseul cu informatiile din JSONReader de la anul curent
         Fiecare copil devine mai mare cu 1 an si daca devine adult este scos din Database.
-        Se adauga copiilor nice scoreul nou si preferintele de cadou.
+        Se adauga copiilor nice scoreul nou, preferintele de cadou si noul elf.
         Se adauga copiii noi care nu sunt adulti.
     Se creeaza o lista de outputChildren ce va fi adaugata in JSONOutput si se adauga la ea toti copiii din Database, converiti in OutputChild.
+    Folosesc un Strategy Factory pentru a creea un strategy pentru sortarea copiilor in functie de strategia din acel an.
     Se impart cadourile pentru copii.
+    Impart cadourile copiilor care au elful YELLOW.
+        Se ia fiecare copil ce nu a primit cadou.
+        Se gaseste cadoul cel mai ieftin din prima categorie din lista de categorii preferate.
+        Daca are quantity>0 i se atrbuie.
     Se elimina cei deveniti adulti.
+    Se sorteaza outputChildren dupa ID.
     Se adauga copiii din outputChildren in JSONOutput.
 Se scriu informatiile din JSONOutput intr-un fisier.
