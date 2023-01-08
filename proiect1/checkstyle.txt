@@ -1,5 +1,0 @@
-Starting audit...
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\enums\Category.java:25:25: Variable 'value' must be private and have accessor methods. [VisibilityModifier]
-[ERROR] D:\Proiecte OOP\oop-asignments\proiect1\.\src\enums\Cities.java:37:25: Variable 'value' must be private and have accessor methods. [VisibilityModifier]
-Audit done.
-Checkstyle ends with 2 errors.

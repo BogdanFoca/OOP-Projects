@@ -10,16 +10,16 @@ The simulation is calculated by the Singleton type SimulationManager object.
 
 It initializes a JSONOutput object which stores the output for each year of the simulation.
 
-In year 0:
+**In year 0:**
 - the budget for each child is calculated;
 - a list of outputChildren is created and added to the JSONOutput, and all children in the Database are added to it, converted to OutputChild;
 - gifts are distributed to the children;
 - those who have become adults are removed;
 - the children from outputChildren are added to the JSONOutput.
 
-In each subsequent year:
+**In each subsequent year:**
 - the budget for each child is calculated;
-- the Database is updated with the information from the current year's JSONReader;
+- the Database is updated with the information from the current year's JSONReader
     - each child becomes one year older and if they become adults they are removed from the Database;
     - the new nice score and gift preferences are added to the children; new children who are not adults are added;
     - a list of outputChildren is created and added to the JSONOutput, and all children in the Database are added to it, converted to OutputChild;
