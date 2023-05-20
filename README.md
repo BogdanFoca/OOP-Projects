@@ -1,4 +1,4 @@
-# OOP Project
+# Santa Claus Gift Manager
 
 This repository contains the project that I have worked on in my Object Oriented Programming class.
 
