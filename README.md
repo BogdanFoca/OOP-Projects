@@ -1,3 +1,7 @@
-# OOP Projects
+# OOP Project
 
-This repository contains a collection of projects that I have worked on in my Object Oriented Programming class. Each project is a separate folder with its own README file.
+This repository contains the project that I have worked on in my Object Oriented Programming class.
+
+It is split into 2 parts, the second one being a continuation of the first.
+
+Each part has each own README inside.
